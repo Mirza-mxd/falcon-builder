@@ -133,3 +133,107 @@ export function PortalNewTicketPage() {
     </section>
   );
 }
+
+export function PortalTicketDetailPage({ id }: { id: string }) {
+  const t = useTranslations("portal");
+  const [ticket, setTicket] = useState<Ticket | null>(null);
+  const [reply, setReply] = useState("");
+
+  useEffect(() => {
+    setTicket(loadTickets().find((x) => x.id === id) ?? null);
+  }, [id]);
+
+  function persist(next: Ticket) {
+    setTicket(next);
+    const all = loadTickets().map((t) => (t.id === next.id ? next : t));
+    saveTickets(all);
+  }
+
+  function onReply(e: React.FormEvent) {
+    e.preventDefault();
+    if (!ticket || !reply.trim()) return;
+    persist({
+      ...ticket,
+      messages: [
+        ...(ticket.messages ?? []),
+        { from: "user", text: reply.trim(), at: new Date().toISOString() },
+      ],
+    });
+    setReply("");
+  }
+
+  function toggleStatus() {
+    if (!ticket) return;
+    persist({ ...ticket, status: ticket.status === "open" ? "closed" : "open" });
+  }
+
+  if (!ticket) {
+    return (
+      <section className="bg-surface py-20">
+        <Container>
+          <FCard className="mx-auto max-w-2xl text-center">
+            <p className="text-text-secondary">Ticket not found.</p>
+            <FButton variant="primary" href="/portal/tickets" className="mt-4">{t("myTickets")}</FButton>
+          </FCard>
+        </Container>
+      </section>
+    );
+  }
+
+  return (
+    <section className="bg-surface py-12">
+      <Container>
+        <div className="mx-auto max-w-3xl">
+          <div className="mb-4">
+            <LLink href="/portal/tickets" className="text-sm text-primary-500 hover:underline">← {t("myTickets")}</LLink>
+          </div>
+          <FCard>
+            <div className="mb-4 flex flex-wrap items-start justify-between gap-3 border-b border-gray-100 pb-4">
+              <div>
+                <h1 className="text-2xl font-bold text-text-primary">{ticket.subject}</h1>
+                <p className="mt-1 text-sm text-text-secondary">{t("created")}: {ticket.createdAt}</p>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className={`rounded-full px-3 py-1 text-xs font-semibold ${ticket.status === "open" ? "bg-primary-50 text-primary-500" : "bg-gray-100 text-text-secondary"}`}>{ticket.status}</span>
+                <FButton variant="outline" size="sm" onClick={toggleStatus}>
+                  {ticket.status === "open" ? "Close" : "Reopen"}
+                </FButton>
+              </div>
+            </div>
+
+            <div>
+              <h2 className="mb-3 font-semibold text-text-primary">{t("conversation")}</h2>
+              <div className="space-y-3">
+                {(ticket.messages ?? []).length === 0 ? (
+                  <p className="text-sm text-text-secondary">{t("noMessages")}</p>
+                ) : (
+                  ticket.messages!.map((m, i) => (
+                    <div key={i} className={`rounded-xl px-4 py-3 ${m.from === "user" ? "bg-primary-50 text-text-primary" : "bg-gray-100 text-text-secondary"}`}>
+                      <div className="mb-1 text-xs font-semibold uppercase tracking-wide opacity-70">
+                        {m.from === "user" ? "You" : t("system")}
+                      </div>
+                      <div className="whitespace-pre-wrap">{m.text}</div>
+                    </div>
+                  ))
+                )}
+              </div>
+            </div>
+
+            {ticket.status === "open" && (
+              <form onSubmit={onReply} className="mt-6 space-y-3 border-t border-gray-100 pt-4">
+                <textarea
+                  value={reply}
+                  onChange={(e) => setReply(e.target.value)}
+                  rows={4}
+                  placeholder={t("replyPlaceholder")}
+                  className="w-full rounded-xl border border-gray-200 px-4 py-3 focus:border-primary-500 focus:outline-none"
+                />
+                <FButton variant="cta" type="submit" disabled={!reply.trim()}>{t("send")}</FButton>
+              </form>
+            )}
+          </FCard>
+        </div>
+      </Container>
+    </section>
+  );
+}
