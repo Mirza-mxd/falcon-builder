@@ -15,6 +15,8 @@ export default function DemoPage() {
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const tsRef = useRef<number>(0);
+  useEffect(() => { tsRef.current = Date.now(); }, []);
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
