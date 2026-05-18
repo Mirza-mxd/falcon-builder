@@ -1,7 +1,7 @@
 export const COMPANY = {
   name: { en: "Falcon Smart Solutions", ar: "فالكون للحلول الذكية" },
   website: "falcon-it.sa",
-  email: "info@falcon-v.com",
+  email: "info@falcon-it.sa",
   phone: { ksa: "+966500000000", egypt: "+201000000000" },
   whatsapp: "966500000000",
   address: {
