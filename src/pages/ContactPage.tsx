@@ -32,6 +32,8 @@ export default function ContactPage() {
           company: String(fd.get("company") ?? ""),
           message: String(fd.get("message") ?? ""),
           locale,
+          hp: String(fd.get("company_website") ?? ""),
+          ts: tsRef.current,
         },
       });
       if (res.ok) setSubmitted(true);
