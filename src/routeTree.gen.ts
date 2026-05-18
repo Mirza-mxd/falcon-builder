@@ -44,11 +44,13 @@ import { Route as PortalTicketsIndexRouteImport } from './routes/portal.tickets.
 import { Route as ArProductsIndexRouteImport } from './routes/ar.products.index'
 import { Route as ArPortalIndexRouteImport } from './routes/ar.portal.index'
 import { Route as PortalTicketsNewRouteImport } from './routes/portal.tickets.new'
+import { Route as PortalTicketsIdRouteImport } from './routes/portal.tickets.$id'
 import { Route as ArProductsOdooServicesRouteImport } from './routes/ar.products.odoo-services'
 import { Route as ArProductsFalconErpDesktopRouteImport } from './routes/ar.products.falcon-erp-desktop'
 import { Route as ArProductsFalconCloudRouteImport } from './routes/ar.products.falcon-cloud'
 import { Route as ArPortalTicketsIndexRouteImport } from './routes/ar.portal.tickets.index'
 import { Route as ArPortalTicketsNewRouteImport } from './routes/ar.portal.tickets.new'
+import { Route as ArPortalTicketsIdRouteImport } from './routes/ar.portal.tickets.$id'
 
 const WebinarsRoute = WebinarsRouteImport.update({
   id: '/webinars',
@@ -226,6 +228,11 @@ const PortalTicketsNewRoute = PortalTicketsNewRouteImport.update({
   path: '/portal/tickets/new',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PortalTicketsIdRoute = PortalTicketsIdRouteImport.update({
+  id: '/portal/tickets/$id',
+  path: '/portal/tickets/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ArProductsOdooServicesRoute = ArProductsOdooServicesRouteImport.update({
   id: '/ar/products/odoo-services',
   path: '/ar/products/odoo-services',
@@ -250,6 +257,11 @@ const ArPortalTicketsIndexRoute = ArPortalTicketsIndexRouteImport.update({
 const ArPortalTicketsNewRoute = ArPortalTicketsNewRouteImport.update({
   id: '/ar/portal/tickets/new',
   path: '/ar/portal/tickets/new',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArPortalTicketsIdRoute = ArPortalTicketsIdRouteImport.update({
+  id: '/ar/portal/tickets/$id',
+  path: '/ar/portal/tickets/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -288,10 +300,12 @@ export interface FileRoutesByFullPath {
   '/ar/products/falcon-cloud': typeof ArProductsFalconCloudRoute
   '/ar/products/falcon-erp-desktop': typeof ArProductsFalconErpDesktopRoute
   '/ar/products/odoo-services': typeof ArProductsOdooServicesRoute
+  '/portal/tickets/$id': typeof PortalTicketsIdRoute
   '/portal/tickets/new': typeof PortalTicketsNewRoute
   '/ar/portal/': typeof ArPortalIndexRoute
   '/ar/products/': typeof ArProductsIndexRoute
   '/portal/tickets/': typeof PortalTicketsIndexRoute
+  '/ar/portal/tickets/$id': typeof ArPortalTicketsIdRoute
   '/ar/portal/tickets/new': typeof ArPortalTicketsNewRoute
   '/ar/portal/tickets/': typeof ArPortalTicketsIndexRoute
 }
@@ -330,10 +344,12 @@ export interface FileRoutesByTo {
   '/ar/products/falcon-cloud': typeof ArProductsFalconCloudRoute
   '/ar/products/falcon-erp-desktop': typeof ArProductsFalconErpDesktopRoute
   '/ar/products/odoo-services': typeof ArProductsOdooServicesRoute
+  '/portal/tickets/$id': typeof PortalTicketsIdRoute
   '/portal/tickets/new': typeof PortalTicketsNewRoute
   '/ar/portal': typeof ArPortalIndexRoute
   '/ar/products': typeof ArProductsIndexRoute
   '/portal/tickets': typeof PortalTicketsIndexRoute
+  '/ar/portal/tickets/$id': typeof ArPortalTicketsIdRoute
   '/ar/portal/tickets/new': typeof ArPortalTicketsNewRoute
   '/ar/portal/tickets': typeof ArPortalTicketsIndexRoute
 }
@@ -373,10 +389,12 @@ export interface FileRoutesById {
   '/ar/products/falcon-cloud': typeof ArProductsFalconCloudRoute
   '/ar/products/falcon-erp-desktop': typeof ArProductsFalconErpDesktopRoute
   '/ar/products/odoo-services': typeof ArProductsOdooServicesRoute
+  '/portal/tickets/$id': typeof PortalTicketsIdRoute
   '/portal/tickets/new': typeof PortalTicketsNewRoute
   '/ar/portal/': typeof ArPortalIndexRoute
   '/ar/products/': typeof ArProductsIndexRoute
   '/portal/tickets/': typeof PortalTicketsIndexRoute
+  '/ar/portal/tickets/$id': typeof ArPortalTicketsIdRoute
   '/ar/portal/tickets/new': typeof ArPortalTicketsNewRoute
   '/ar/portal/tickets/': typeof ArPortalTicketsIndexRoute
 }
@@ -417,10 +435,12 @@ export interface FileRouteTypes {
     | '/ar/products/falcon-cloud'
     | '/ar/products/falcon-erp-desktop'
     | '/ar/products/odoo-services'
+    | '/portal/tickets/$id'
     | '/portal/tickets/new'
     | '/ar/portal/'
     | '/ar/products/'
     | '/portal/tickets/'
+    | '/ar/portal/tickets/$id'
     | '/ar/portal/tickets/new'
     | '/ar/portal/tickets/'
   fileRoutesByTo: FileRoutesByTo
@@ -459,10 +479,12 @@ export interface FileRouteTypes {
     | '/ar/products/falcon-cloud'
     | '/ar/products/falcon-erp-desktop'
     | '/ar/products/odoo-services'
+    | '/portal/tickets/$id'
     | '/portal/tickets/new'
     | '/ar/portal'
     | '/ar/products'
     | '/portal/tickets'
+    | '/ar/portal/tickets/$id'
     | '/ar/portal/tickets/new'
     | '/ar/portal/tickets'
   id:
@@ -501,10 +523,12 @@ export interface FileRouteTypes {
     | '/ar/products/falcon-cloud'
     | '/ar/products/falcon-erp-desktop'
     | '/ar/products/odoo-services'
+    | '/portal/tickets/$id'
     | '/portal/tickets/new'
     | '/ar/portal/'
     | '/ar/products/'
     | '/portal/tickets/'
+    | '/ar/portal/tickets/$id'
     | '/ar/portal/tickets/new'
     | '/ar/portal/tickets/'
   fileRoutesById: FileRoutesById
@@ -544,10 +568,12 @@ export interface RootRouteChildren {
   ArProductsFalconCloudRoute: typeof ArProductsFalconCloudRoute
   ArProductsFalconErpDesktopRoute: typeof ArProductsFalconErpDesktopRoute
   ArProductsOdooServicesRoute: typeof ArProductsOdooServicesRoute
+  PortalTicketsIdRoute: typeof PortalTicketsIdRoute
   PortalTicketsNewRoute: typeof PortalTicketsNewRoute
   ArPortalIndexRoute: typeof ArPortalIndexRoute
   ArProductsIndexRoute: typeof ArProductsIndexRoute
   PortalTicketsIndexRoute: typeof PortalTicketsIndexRoute
+  ArPortalTicketsIdRoute: typeof ArPortalTicketsIdRoute
   ArPortalTicketsNewRoute: typeof ArPortalTicketsNewRoute
   ArPortalTicketsIndexRoute: typeof ArPortalTicketsIndexRoute
 }
@@ -799,6 +825,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PortalTicketsNewRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/portal/tickets/$id': {
+      id: '/portal/tickets/$id'
+      path: '/portal/tickets/$id'
+      fullPath: '/portal/tickets/$id'
+      preLoaderRoute: typeof PortalTicketsIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/ar/products/odoo-services': {
       id: '/ar/products/odoo-services'
       path: '/ar/products/odoo-services'
@@ -832,6 +865,13 @@ declare module '@tanstack/react-router' {
       path: '/ar/portal/tickets/new'
       fullPath: '/ar/portal/tickets/new'
       preLoaderRoute: typeof ArPortalTicketsNewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ar/portal/tickets/$id': {
+      id: '/ar/portal/tickets/$id'
+      path: '/ar/portal/tickets/$id'
+      fullPath: '/ar/portal/tickets/$id'
+      preLoaderRoute: typeof ArPortalTicketsIdRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -872,23 +912,15 @@ const rootRouteChildren: RootRouteChildren = {
   ArProductsFalconCloudRoute: ArProductsFalconCloudRoute,
   ArProductsFalconErpDesktopRoute: ArProductsFalconErpDesktopRoute,
   ArProductsOdooServicesRoute: ArProductsOdooServicesRoute,
+  PortalTicketsIdRoute: PortalTicketsIdRoute,
   PortalTicketsNewRoute: PortalTicketsNewRoute,
   ArPortalIndexRoute: ArPortalIndexRoute,
   ArProductsIndexRoute: ArProductsIndexRoute,
   PortalTicketsIndexRoute: PortalTicketsIndexRoute,
+  ArPortalTicketsIdRoute: ArPortalTicketsIdRoute,
   ArPortalTicketsNewRoute: ArPortalTicketsNewRoute,
   ArPortalTicketsIndexRoute: ArPortalTicketsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

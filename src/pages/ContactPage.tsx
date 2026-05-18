@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslations, useLocale } from "@/lib/i18n";
 import { useServerFn } from "@tanstack/react-start";
 import { submitLead } from "@/lib/leads.functions";
@@ -14,6 +14,8 @@ export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const tsRef = useRef<number>(0);
+  useEffect(() => { tsRef.current = Date.now(); }, []);
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -30,6 +32,8 @@ export default function ContactPage() {
           company: String(fd.get("company") ?? ""),
           message: String(fd.get("message") ?? ""),
           locale,
+          hp: String(fd.get("company_website") ?? ""),
+          ts: tsRef.current,
         },
       });
       if (res.ok) setSubmitted(true);
@@ -80,6 +84,7 @@ export default function ContactPage() {
                   </div>
                 ) : (
                   <form onSubmit={onSubmit} className="space-y-4">
+                    <input type="text" name="company_website" tabIndex={-1} autoComplete="off" aria-hidden="true" className="absolute left-[-9999px] h-0 w-0 opacity-0" />
                     <div className="grid gap-4 sm:grid-cols-2">
                       <Field name="name" label={t("nameLabel")} required />
                       <Field name="email" type="email" label={t("emailLabel")} required />
