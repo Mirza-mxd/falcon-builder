@@ -9,38 +9,635 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as WebinarsRouteImport } from './routes/webinars'
+import { Route as TermsRouteImport } from './routes/terms'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as PartnersRouteImport } from './routes/partners'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as HelpRouteImport } from './routes/help'
+import { Route as FaqRouteImport } from './routes/faq'
+import { Route as DemoRouteImport } from './routes/demo'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CareersRouteImport } from './routes/careers'
+import { Route as BlogRouteImport } from './routes/blog'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ProductsIndexRouteImport } from './routes/products.index'
+import { Route as PortalIndexRouteImport } from './routes/portal.index'
+import { Route as ArIndexRouteImport } from './routes/ar.index'
+import { Route as ProductsOdooServicesRouteImport } from './routes/products.odoo-services'
+import { Route as ProductsFalconErpDesktopRouteImport } from './routes/products.falcon-erp-desktop'
+import { Route as ProductsFalconCloudRouteImport } from './routes/products.falcon-cloud'
+import { Route as ArWebinarsRouteImport } from './routes/ar.webinars'
+import { Route as ArTermsRouteImport } from './routes/ar.terms'
+import { Route as ArPrivacyRouteImport } from './routes/ar.privacy'
+import { Route as ArPartnersRouteImport } from './routes/ar.partners'
+import { Route as ArLoginRouteImport } from './routes/ar.login'
+import { Route as ArHelpRouteImport } from './routes/ar.help'
+import { Route as ArFaqRouteImport } from './routes/ar.faq'
+import { Route as ArDemoRouteImport } from './routes/ar.demo'
+import { Route as ArContactRouteImport } from './routes/ar.contact'
+import { Route as ArCareersRouteImport } from './routes/ar.careers'
+import { Route as ArBlogRouteImport } from './routes/ar.blog'
+import { Route as ArAboutRouteImport } from './routes/ar.about'
+import { Route as PortalTicketsIndexRouteImport } from './routes/portal.tickets.index'
+import { Route as ArProductsIndexRouteImport } from './routes/ar.products.index'
+import { Route as ArPortalIndexRouteImport } from './routes/ar.portal.index'
+import { Route as PortalTicketsNewRouteImport } from './routes/portal.tickets.new'
+import { Route as ArProductsOdooServicesRouteImport } from './routes/ar.products.odoo-services'
+import { Route as ArProductsFalconErpDesktopRouteImport } from './routes/ar.products.falcon-erp-desktop'
+import { Route as ArProductsFalconCloudRouteImport } from './routes/ar.products.falcon-cloud'
+import { Route as ArPortalTicketsIndexRouteImport } from './routes/ar.portal.tickets.index'
+import { Route as ArPortalTicketsNewRouteImport } from './routes/ar.portal.tickets.new'
 
+const WebinarsRoute = WebinarsRouteImport.update({
+  id: '/webinars',
+  path: '/webinars',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PartnersRoute = PartnersRouteImport.update({
+  id: '/partners',
+  path: '/partners',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HelpRoute = HelpRouteImport.update({
+  id: '/help',
+  path: '/help',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DemoRoute = DemoRouteImport.update({
+  id: '/demo',
+  path: '/demo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CareersRoute = CareersRouteImport.update({
+  id: '/careers',
+  path: '/careers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogRoute = BlogRouteImport.update({
+  id: '/blog',
+  path: '/blog',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProductsIndexRoute = ProductsIndexRouteImport.update({
+  id: '/products/',
+  path: '/products/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PortalIndexRoute = PortalIndexRouteImport.update({
+  id: '/portal/',
+  path: '/portal/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArIndexRoute = ArIndexRouteImport.update({
+  id: '/ar/',
+  path: '/ar/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductsOdooServicesRoute = ProductsOdooServicesRouteImport.update({
+  id: '/products/odoo-services',
+  path: '/products/odoo-services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductsFalconErpDesktopRoute =
+  ProductsFalconErpDesktopRouteImport.update({
+    id: '/products/falcon-erp-desktop',
+    path: '/products/falcon-erp-desktop',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ProductsFalconCloudRoute = ProductsFalconCloudRouteImport.update({
+  id: '/products/falcon-cloud',
+  path: '/products/falcon-cloud',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArWebinarsRoute = ArWebinarsRouteImport.update({
+  id: '/ar/webinars',
+  path: '/ar/webinars',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArTermsRoute = ArTermsRouteImport.update({
+  id: '/ar/terms',
+  path: '/ar/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArPrivacyRoute = ArPrivacyRouteImport.update({
+  id: '/ar/privacy',
+  path: '/ar/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArPartnersRoute = ArPartnersRouteImport.update({
+  id: '/ar/partners',
+  path: '/ar/partners',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArLoginRoute = ArLoginRouteImport.update({
+  id: '/ar/login',
+  path: '/ar/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArHelpRoute = ArHelpRouteImport.update({
+  id: '/ar/help',
+  path: '/ar/help',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArFaqRoute = ArFaqRouteImport.update({
+  id: '/ar/faq',
+  path: '/ar/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArDemoRoute = ArDemoRouteImport.update({
+  id: '/ar/demo',
+  path: '/ar/demo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArContactRoute = ArContactRouteImport.update({
+  id: '/ar/contact',
+  path: '/ar/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArCareersRoute = ArCareersRouteImport.update({
+  id: '/ar/careers',
+  path: '/ar/careers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArBlogRoute = ArBlogRouteImport.update({
+  id: '/ar/blog',
+  path: '/ar/blog',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArAboutRoute = ArAboutRouteImport.update({
+  id: '/ar/about',
+  path: '/ar/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PortalTicketsIndexRoute = PortalTicketsIndexRouteImport.update({
+  id: '/portal/tickets/',
+  path: '/portal/tickets/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArProductsIndexRoute = ArProductsIndexRouteImport.update({
+  id: '/ar/products/',
+  path: '/ar/products/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArPortalIndexRoute = ArPortalIndexRouteImport.update({
+  id: '/ar/portal/',
+  path: '/ar/portal/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PortalTicketsNewRoute = PortalTicketsNewRouteImport.update({
+  id: '/portal/tickets/new',
+  path: '/portal/tickets/new',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArProductsOdooServicesRoute = ArProductsOdooServicesRouteImport.update({
+  id: '/ar/products/odoo-services',
+  path: '/ar/products/odoo-services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArProductsFalconErpDesktopRoute =
+  ArProductsFalconErpDesktopRouteImport.update({
+    id: '/ar/products/falcon-erp-desktop',
+    path: '/ar/products/falcon-erp-desktop',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ArProductsFalconCloudRoute = ArProductsFalconCloudRouteImport.update({
+  id: '/ar/products/falcon-cloud',
+  path: '/ar/products/falcon-cloud',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArPortalTicketsIndexRoute = ArPortalTicketsIndexRouteImport.update({
+  id: '/ar/portal/tickets/',
+  path: '/ar/portal/tickets/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArPortalTicketsNewRoute = ArPortalTicketsNewRouteImport.update({
+  id: '/ar/portal/tickets/new',
+  path: '/ar/portal/tickets/new',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/blog': typeof BlogRoute
+  '/careers': typeof CareersRoute
+  '/contact': typeof ContactRoute
+  '/demo': typeof DemoRoute
+  '/faq': typeof FaqRoute
+  '/help': typeof HelpRoute
+  '/login': typeof LoginRoute
+  '/partners': typeof PartnersRoute
+  '/privacy': typeof PrivacyRoute
+  '/terms': typeof TermsRoute
+  '/webinars': typeof WebinarsRoute
+  '/ar/about': typeof ArAboutRoute
+  '/ar/blog': typeof ArBlogRoute
+  '/ar/careers': typeof ArCareersRoute
+  '/ar/contact': typeof ArContactRoute
+  '/ar/demo': typeof ArDemoRoute
+  '/ar/faq': typeof ArFaqRoute
+  '/ar/help': typeof ArHelpRoute
+  '/ar/login': typeof ArLoginRoute
+  '/ar/partners': typeof ArPartnersRoute
+  '/ar/privacy': typeof ArPrivacyRoute
+  '/ar/terms': typeof ArTermsRoute
+  '/ar/webinars': typeof ArWebinarsRoute
+  '/products/falcon-cloud': typeof ProductsFalconCloudRoute
+  '/products/falcon-erp-desktop': typeof ProductsFalconErpDesktopRoute
+  '/products/odoo-services': typeof ProductsOdooServicesRoute
+  '/ar/': typeof ArIndexRoute
+  '/portal/': typeof PortalIndexRoute
+  '/products/': typeof ProductsIndexRoute
+  '/ar/products/falcon-cloud': typeof ArProductsFalconCloudRoute
+  '/ar/products/falcon-erp-desktop': typeof ArProductsFalconErpDesktopRoute
+  '/ar/products/odoo-services': typeof ArProductsOdooServicesRoute
+  '/portal/tickets/new': typeof PortalTicketsNewRoute
+  '/ar/portal/': typeof ArPortalIndexRoute
+  '/ar/products/': typeof ArProductsIndexRoute
+  '/portal/tickets/': typeof PortalTicketsIndexRoute
+  '/ar/portal/tickets/new': typeof ArPortalTicketsNewRoute
+  '/ar/portal/tickets/': typeof ArPortalTicketsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/blog': typeof BlogRoute
+  '/careers': typeof CareersRoute
+  '/contact': typeof ContactRoute
+  '/demo': typeof DemoRoute
+  '/faq': typeof FaqRoute
+  '/help': typeof HelpRoute
+  '/login': typeof LoginRoute
+  '/partners': typeof PartnersRoute
+  '/privacy': typeof PrivacyRoute
+  '/terms': typeof TermsRoute
+  '/webinars': typeof WebinarsRoute
+  '/ar/about': typeof ArAboutRoute
+  '/ar/blog': typeof ArBlogRoute
+  '/ar/careers': typeof ArCareersRoute
+  '/ar/contact': typeof ArContactRoute
+  '/ar/demo': typeof ArDemoRoute
+  '/ar/faq': typeof ArFaqRoute
+  '/ar/help': typeof ArHelpRoute
+  '/ar/login': typeof ArLoginRoute
+  '/ar/partners': typeof ArPartnersRoute
+  '/ar/privacy': typeof ArPrivacyRoute
+  '/ar/terms': typeof ArTermsRoute
+  '/ar/webinars': typeof ArWebinarsRoute
+  '/products/falcon-cloud': typeof ProductsFalconCloudRoute
+  '/products/falcon-erp-desktop': typeof ProductsFalconErpDesktopRoute
+  '/products/odoo-services': typeof ProductsOdooServicesRoute
+  '/ar': typeof ArIndexRoute
+  '/portal': typeof PortalIndexRoute
+  '/products': typeof ProductsIndexRoute
+  '/ar/products/falcon-cloud': typeof ArProductsFalconCloudRoute
+  '/ar/products/falcon-erp-desktop': typeof ArProductsFalconErpDesktopRoute
+  '/ar/products/odoo-services': typeof ArProductsOdooServicesRoute
+  '/portal/tickets/new': typeof PortalTicketsNewRoute
+  '/ar/portal': typeof ArPortalIndexRoute
+  '/ar/products': typeof ArProductsIndexRoute
+  '/portal/tickets': typeof PortalTicketsIndexRoute
+  '/ar/portal/tickets/new': typeof ArPortalTicketsNewRoute
+  '/ar/portal/tickets': typeof ArPortalTicketsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/blog': typeof BlogRoute
+  '/careers': typeof CareersRoute
+  '/contact': typeof ContactRoute
+  '/demo': typeof DemoRoute
+  '/faq': typeof FaqRoute
+  '/help': typeof HelpRoute
+  '/login': typeof LoginRoute
+  '/partners': typeof PartnersRoute
+  '/privacy': typeof PrivacyRoute
+  '/terms': typeof TermsRoute
+  '/webinars': typeof WebinarsRoute
+  '/ar/about': typeof ArAboutRoute
+  '/ar/blog': typeof ArBlogRoute
+  '/ar/careers': typeof ArCareersRoute
+  '/ar/contact': typeof ArContactRoute
+  '/ar/demo': typeof ArDemoRoute
+  '/ar/faq': typeof ArFaqRoute
+  '/ar/help': typeof ArHelpRoute
+  '/ar/login': typeof ArLoginRoute
+  '/ar/partners': typeof ArPartnersRoute
+  '/ar/privacy': typeof ArPrivacyRoute
+  '/ar/terms': typeof ArTermsRoute
+  '/ar/webinars': typeof ArWebinarsRoute
+  '/products/falcon-cloud': typeof ProductsFalconCloudRoute
+  '/products/falcon-erp-desktop': typeof ProductsFalconErpDesktopRoute
+  '/products/odoo-services': typeof ProductsOdooServicesRoute
+  '/ar/': typeof ArIndexRoute
+  '/portal/': typeof PortalIndexRoute
+  '/products/': typeof ProductsIndexRoute
+  '/ar/products/falcon-cloud': typeof ArProductsFalconCloudRoute
+  '/ar/products/falcon-erp-desktop': typeof ArProductsFalconErpDesktopRoute
+  '/ar/products/odoo-services': typeof ArProductsOdooServicesRoute
+  '/portal/tickets/new': typeof PortalTicketsNewRoute
+  '/ar/portal/': typeof ArPortalIndexRoute
+  '/ar/products/': typeof ArProductsIndexRoute
+  '/portal/tickets/': typeof PortalTicketsIndexRoute
+  '/ar/portal/tickets/new': typeof ArPortalTicketsNewRoute
+  '/ar/portal/tickets/': typeof ArPortalTicketsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/blog'
+    | '/careers'
+    | '/contact'
+    | '/demo'
+    | '/faq'
+    | '/help'
+    | '/login'
+    | '/partners'
+    | '/privacy'
+    | '/terms'
+    | '/webinars'
+    | '/ar/about'
+    | '/ar/blog'
+    | '/ar/careers'
+    | '/ar/contact'
+    | '/ar/demo'
+    | '/ar/faq'
+    | '/ar/help'
+    | '/ar/login'
+    | '/ar/partners'
+    | '/ar/privacy'
+    | '/ar/terms'
+    | '/ar/webinars'
+    | '/products/falcon-cloud'
+    | '/products/falcon-erp-desktop'
+    | '/products/odoo-services'
+    | '/ar/'
+    | '/portal/'
+    | '/products/'
+    | '/ar/products/falcon-cloud'
+    | '/ar/products/falcon-erp-desktop'
+    | '/ar/products/odoo-services'
+    | '/portal/tickets/new'
+    | '/ar/portal/'
+    | '/ar/products/'
+    | '/portal/tickets/'
+    | '/ar/portal/tickets/new'
+    | '/ar/portal/tickets/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/blog'
+    | '/careers'
+    | '/contact'
+    | '/demo'
+    | '/faq'
+    | '/help'
+    | '/login'
+    | '/partners'
+    | '/privacy'
+    | '/terms'
+    | '/webinars'
+    | '/ar/about'
+    | '/ar/blog'
+    | '/ar/careers'
+    | '/ar/contact'
+    | '/ar/demo'
+    | '/ar/faq'
+    | '/ar/help'
+    | '/ar/login'
+    | '/ar/partners'
+    | '/ar/privacy'
+    | '/ar/terms'
+    | '/ar/webinars'
+    | '/products/falcon-cloud'
+    | '/products/falcon-erp-desktop'
+    | '/products/odoo-services'
+    | '/ar'
+    | '/portal'
+    | '/products'
+    | '/ar/products/falcon-cloud'
+    | '/ar/products/falcon-erp-desktop'
+    | '/ar/products/odoo-services'
+    | '/portal/tickets/new'
+    | '/ar/portal'
+    | '/ar/products'
+    | '/portal/tickets'
+    | '/ar/portal/tickets/new'
+    | '/ar/portal/tickets'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/blog'
+    | '/careers'
+    | '/contact'
+    | '/demo'
+    | '/faq'
+    | '/help'
+    | '/login'
+    | '/partners'
+    | '/privacy'
+    | '/terms'
+    | '/webinars'
+    | '/ar/about'
+    | '/ar/blog'
+    | '/ar/careers'
+    | '/ar/contact'
+    | '/ar/demo'
+    | '/ar/faq'
+    | '/ar/help'
+    | '/ar/login'
+    | '/ar/partners'
+    | '/ar/privacy'
+    | '/ar/terms'
+    | '/ar/webinars'
+    | '/products/falcon-cloud'
+    | '/products/falcon-erp-desktop'
+    | '/products/odoo-services'
+    | '/ar/'
+    | '/portal/'
+    | '/products/'
+    | '/ar/products/falcon-cloud'
+    | '/ar/products/falcon-erp-desktop'
+    | '/ar/products/odoo-services'
+    | '/portal/tickets/new'
+    | '/ar/portal/'
+    | '/ar/products/'
+    | '/portal/tickets/'
+    | '/ar/portal/tickets/new'
+    | '/ar/portal/tickets/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  BlogRoute: typeof BlogRoute
+  CareersRoute: typeof CareersRoute
+  ContactRoute: typeof ContactRoute
+  DemoRoute: typeof DemoRoute
+  FaqRoute: typeof FaqRoute
+  HelpRoute: typeof HelpRoute
+  LoginRoute: typeof LoginRoute
+  PartnersRoute: typeof PartnersRoute
+  PrivacyRoute: typeof PrivacyRoute
+  TermsRoute: typeof TermsRoute
+  WebinarsRoute: typeof WebinarsRoute
+  ArAboutRoute: typeof ArAboutRoute
+  ArBlogRoute: typeof ArBlogRoute
+  ArCareersRoute: typeof ArCareersRoute
+  ArContactRoute: typeof ArContactRoute
+  ArDemoRoute: typeof ArDemoRoute
+  ArFaqRoute: typeof ArFaqRoute
+  ArHelpRoute: typeof ArHelpRoute
+  ArLoginRoute: typeof ArLoginRoute
+  ArPartnersRoute: typeof ArPartnersRoute
+  ArPrivacyRoute: typeof ArPrivacyRoute
+  ArTermsRoute: typeof ArTermsRoute
+  ArWebinarsRoute: typeof ArWebinarsRoute
+  ProductsFalconCloudRoute: typeof ProductsFalconCloudRoute
+  ProductsFalconErpDesktopRoute: typeof ProductsFalconErpDesktopRoute
+  ProductsOdooServicesRoute: typeof ProductsOdooServicesRoute
+  ArIndexRoute: typeof ArIndexRoute
+  PortalIndexRoute: typeof PortalIndexRoute
+  ProductsIndexRoute: typeof ProductsIndexRoute
+  ArProductsFalconCloudRoute: typeof ArProductsFalconCloudRoute
+  ArProductsFalconErpDesktopRoute: typeof ArProductsFalconErpDesktopRoute
+  ArProductsOdooServicesRoute: typeof ArProductsOdooServicesRoute
+  PortalTicketsNewRoute: typeof PortalTicketsNewRoute
+  ArPortalIndexRoute: typeof ArPortalIndexRoute
+  ArProductsIndexRoute: typeof ArProductsIndexRoute
+  PortalTicketsIndexRoute: typeof PortalTicketsIndexRoute
+  ArPortalTicketsNewRoute: typeof ArPortalTicketsNewRoute
+  ArPortalTicketsIndexRoute: typeof ArPortalTicketsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/webinars': {
+      id: '/webinars'
+      path: '/webinars'
+      fullPath: '/webinars'
+      preLoaderRoute: typeof WebinarsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/partners': {
+      id: '/partners'
+      path: '/partners'
+      fullPath: '/partners'
+      preLoaderRoute: typeof PartnersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/help': {
+      id: '/help'
+      path: '/help'
+      fullPath: '/help'
+      preLoaderRoute: typeof HelpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/demo': {
+      id: '/demo'
+      path: '/demo'
+      fullPath: '/demo'
+      preLoaderRoute: typeof DemoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/careers': {
+      id: '/careers'
+      path: '/careers'
+      fullPath: '/careers'
+      preLoaderRoute: typeof CareersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog': {
+      id: '/blog'
+      path: '/blog'
+      fullPath: '/blog'
+      preLoaderRoute: typeof BlogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,12 +645,250 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/products/': {
+      id: '/products/'
+      path: '/products'
+      fullPath: '/products/'
+      preLoaderRoute: typeof ProductsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/portal/': {
+      id: '/portal/'
+      path: '/portal'
+      fullPath: '/portal/'
+      preLoaderRoute: typeof PortalIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ar/': {
+      id: '/ar/'
+      path: '/ar'
+      fullPath: '/ar/'
+      preLoaderRoute: typeof ArIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/products/odoo-services': {
+      id: '/products/odoo-services'
+      path: '/products/odoo-services'
+      fullPath: '/products/odoo-services'
+      preLoaderRoute: typeof ProductsOdooServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/products/falcon-erp-desktop': {
+      id: '/products/falcon-erp-desktop'
+      path: '/products/falcon-erp-desktop'
+      fullPath: '/products/falcon-erp-desktop'
+      preLoaderRoute: typeof ProductsFalconErpDesktopRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/products/falcon-cloud': {
+      id: '/products/falcon-cloud'
+      path: '/products/falcon-cloud'
+      fullPath: '/products/falcon-cloud'
+      preLoaderRoute: typeof ProductsFalconCloudRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ar/webinars': {
+      id: '/ar/webinars'
+      path: '/ar/webinars'
+      fullPath: '/ar/webinars'
+      preLoaderRoute: typeof ArWebinarsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ar/terms': {
+      id: '/ar/terms'
+      path: '/ar/terms'
+      fullPath: '/ar/terms'
+      preLoaderRoute: typeof ArTermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ar/privacy': {
+      id: '/ar/privacy'
+      path: '/ar/privacy'
+      fullPath: '/ar/privacy'
+      preLoaderRoute: typeof ArPrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ar/partners': {
+      id: '/ar/partners'
+      path: '/ar/partners'
+      fullPath: '/ar/partners'
+      preLoaderRoute: typeof ArPartnersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ar/login': {
+      id: '/ar/login'
+      path: '/ar/login'
+      fullPath: '/ar/login'
+      preLoaderRoute: typeof ArLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ar/help': {
+      id: '/ar/help'
+      path: '/ar/help'
+      fullPath: '/ar/help'
+      preLoaderRoute: typeof ArHelpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ar/faq': {
+      id: '/ar/faq'
+      path: '/ar/faq'
+      fullPath: '/ar/faq'
+      preLoaderRoute: typeof ArFaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ar/demo': {
+      id: '/ar/demo'
+      path: '/ar/demo'
+      fullPath: '/ar/demo'
+      preLoaderRoute: typeof ArDemoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ar/contact': {
+      id: '/ar/contact'
+      path: '/ar/contact'
+      fullPath: '/ar/contact'
+      preLoaderRoute: typeof ArContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ar/careers': {
+      id: '/ar/careers'
+      path: '/ar/careers'
+      fullPath: '/ar/careers'
+      preLoaderRoute: typeof ArCareersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ar/blog': {
+      id: '/ar/blog'
+      path: '/ar/blog'
+      fullPath: '/ar/blog'
+      preLoaderRoute: typeof ArBlogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ar/about': {
+      id: '/ar/about'
+      path: '/ar/about'
+      fullPath: '/ar/about'
+      preLoaderRoute: typeof ArAboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/portal/tickets/': {
+      id: '/portal/tickets/'
+      path: '/portal/tickets'
+      fullPath: '/portal/tickets/'
+      preLoaderRoute: typeof PortalTicketsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ar/products/': {
+      id: '/ar/products/'
+      path: '/ar/products'
+      fullPath: '/ar/products/'
+      preLoaderRoute: typeof ArProductsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ar/portal/': {
+      id: '/ar/portal/'
+      path: '/ar/portal'
+      fullPath: '/ar/portal/'
+      preLoaderRoute: typeof ArPortalIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/portal/tickets/new': {
+      id: '/portal/tickets/new'
+      path: '/portal/tickets/new'
+      fullPath: '/portal/tickets/new'
+      preLoaderRoute: typeof PortalTicketsNewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ar/products/odoo-services': {
+      id: '/ar/products/odoo-services'
+      path: '/ar/products/odoo-services'
+      fullPath: '/ar/products/odoo-services'
+      preLoaderRoute: typeof ArProductsOdooServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ar/products/falcon-erp-desktop': {
+      id: '/ar/products/falcon-erp-desktop'
+      path: '/ar/products/falcon-erp-desktop'
+      fullPath: '/ar/products/falcon-erp-desktop'
+      preLoaderRoute: typeof ArProductsFalconErpDesktopRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ar/products/falcon-cloud': {
+      id: '/ar/products/falcon-cloud'
+      path: '/ar/products/falcon-cloud'
+      fullPath: '/ar/products/falcon-cloud'
+      preLoaderRoute: typeof ArProductsFalconCloudRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ar/portal/tickets/': {
+      id: '/ar/portal/tickets/'
+      path: '/ar/portal/tickets'
+      fullPath: '/ar/portal/tickets/'
+      preLoaderRoute: typeof ArPortalTicketsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ar/portal/tickets/new': {
+      id: '/ar/portal/tickets/new'
+      path: '/ar/portal/tickets/new'
+      fullPath: '/ar/portal/tickets/new'
+      preLoaderRoute: typeof ArPortalTicketsNewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  BlogRoute: BlogRoute,
+  CareersRoute: CareersRoute,
+  ContactRoute: ContactRoute,
+  DemoRoute: DemoRoute,
+  FaqRoute: FaqRoute,
+  HelpRoute: HelpRoute,
+  LoginRoute: LoginRoute,
+  PartnersRoute: PartnersRoute,
+  PrivacyRoute: PrivacyRoute,
+  TermsRoute: TermsRoute,
+  WebinarsRoute: WebinarsRoute,
+  ArAboutRoute: ArAboutRoute,
+  ArBlogRoute: ArBlogRoute,
+  ArCareersRoute: ArCareersRoute,
+  ArContactRoute: ArContactRoute,
+  ArDemoRoute: ArDemoRoute,
+  ArFaqRoute: ArFaqRoute,
+  ArHelpRoute: ArHelpRoute,
+  ArLoginRoute: ArLoginRoute,
+  ArPartnersRoute: ArPartnersRoute,
+  ArPrivacyRoute: ArPrivacyRoute,
+  ArTermsRoute: ArTermsRoute,
+  ArWebinarsRoute: ArWebinarsRoute,
+  ProductsFalconCloudRoute: ProductsFalconCloudRoute,
+  ProductsFalconErpDesktopRoute: ProductsFalconErpDesktopRoute,
+  ProductsOdooServicesRoute: ProductsOdooServicesRoute,
+  ArIndexRoute: ArIndexRoute,
+  PortalIndexRoute: PortalIndexRoute,
+  ProductsIndexRoute: ProductsIndexRoute,
+  ArProductsFalconCloudRoute: ArProductsFalconCloudRoute,
+  ArProductsFalconErpDesktopRoute: ArProductsFalconErpDesktopRoute,
+  ArProductsOdooServicesRoute: ArProductsOdooServicesRoute,
+  PortalTicketsNewRoute: PortalTicketsNewRoute,
+  ArPortalIndexRoute: ArPortalIndexRoute,
+  ArProductsIndexRoute: ArProductsIndexRoute,
+  PortalTicketsIndexRoute: PortalTicketsIndexRoute,
+  ArPortalTicketsNewRoute: ArPortalTicketsNewRoute,
+  ArPortalTicketsIndexRoute: ArPortalTicketsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
