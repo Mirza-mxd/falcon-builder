@@ -69,15 +69,17 @@ export function PortalTicketsPage() {
         ) : (
           <div className="space-y-3">
             {tickets.map((ti) => (
-              <FCard key={ti.id}>
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h3 className="font-semibold text-text-primary">{ti.subject}</h3>
-                    <p className="text-sm text-text-secondary">{ti.createdAt}</p>
+              <LLink key={ti.id} to={`/portal/tickets/${ti.id}`} className="block">
+                <FCard className="transition hover:border-primary-200 hover:shadow-md">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <h3 className="font-semibold text-text-primary">{ti.subject}</h3>
+                      <p className="text-sm text-text-secondary">{ti.createdAt}</p>
+                    </div>
+                    <span className={`rounded-full px-3 py-1 text-xs font-semibold ${ti.status === "open" ? "bg-primary-50 text-primary-500" : "bg-gray-100 text-text-secondary"}`}>{ti.status}</span>
                   </div>
-                  <span className={`rounded-full px-3 py-1 text-xs font-semibold ${ti.status === "open" ? "bg-primary-50 text-primary-500" : "bg-gray-100 text-text-secondary"}`}>{ti.status}</span>
-                </div>
-              </FCard>
+                </FCard>
+              </LLink>
             ))}
           </div>
         )}
