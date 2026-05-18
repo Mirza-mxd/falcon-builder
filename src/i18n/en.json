@@ -293,7 +293,18 @@
     "indEducation": "Education",
     "indLogistics": "Logistics",
     "indTrading": "Trading & Wholesale",
-    "indOther": "Other"
+    "indOther": "Other",
+    "heroTitle": "Book Your Free Demo",
+    "heroSubtitle": "See how Falcon ERP can transform your business in 30 minutes.",
+    "nameLabel": "Full Name",
+    "emailLabel": "Business Email",
+    "phoneLabel": "Phone Number",
+    "companyLabel": "Company Name",
+    "jobTitleLabel": "Job Title",
+    "companySizeLabel": "Company Size",
+    "notesLabel": "Message / Requirements",
+    "successTitle": "Request received!",
+    "successText": "Thank you! We'll be in touch within 24 hours."
   },
   "contact": {
     "heading": "Get in Touch",
@@ -306,7 +317,17 @@
     "submit": "Send Message",
     "success": "Message sent! We'll respond within 24 hours.",
     "officeKSA": "Saudi Arabia Office",
-    "officeEgypt": "Egypt Office"
+    "officeEgypt": "Egypt Office",
+    "heroTitle": "Get in Touch",
+    "heroSubtitle": "Our team is ready to help you find the right ERP solution.",
+    "nameLabel": "Your Name",
+    "emailLabel": "Email Address",
+    "phoneLabel": "Phone Number",
+    "companyLabel": "Company",
+    "messageLabel": "Your Message",
+    "officeLabel": "Offices",
+    "successTitle": "Thank you!",
+    "successText": "Message sent! We'll respond within 24 hours."
   },
   "desktopPage": {
     "badge": "On-Premise ERP",
@@ -387,7 +408,36 @@
     "trustBadge3": "500+ Clients",
     "trustBadge4": "24/7 Support",
     "ctaTitle": "Ready to take control of your data?",
-    "ctaSubtitle": "Deploy Falcon ERP on your own servers. Full sovereignty, full compliance, full power."
+    "ctaSubtitle": "Deploy Falcon ERP on your own servers. Full sovereignty, full compliance, full power.",
+    "ctaPrimary": "Get Your Free ERP Assessment",
+    "ctaSecondary": "Book a Live Demo",
+    "featuresTitle": "Everything your business needs — nothing it does not",
+    "screensTitle": "Screenshots",
+    "ctaText": "",
+    "feature1": {
+      "title": "Paying SAP prices for basic features",
+      "description": "Global ERPs charge $150K-$500K upfront with 12+ months of implementation. Most features go unused while your budget disappears."
+    },
+    "feature2": {
+      "title": "Your data lives on foreign servers",
+      "description": "Cloud-only ERPs store your financial records, employee data, and trade secrets on servers outside the Kingdom. That is a PDPL compliance risk."
+    },
+    "feature3": {
+      "title": "Slow implementations that drain your team",
+      "description": "6-12 month rollouts mean lost productivity, frustrated employees, and delayed ROI. Your business cannot wait that long."
+    },
+    "feature4": {
+      "title": "Feature 4",
+      "description": ""
+    },
+    "feature5": {
+      "title": "Feature 5",
+      "description": ""
+    },
+    "feature6": {
+      "title": "Feature 6",
+      "description": ""
+    }
   },
   "cloudPage": {
     "badge": "Cloud ERP",
@@ -468,7 +518,35 @@
     "trustBadge3": "SOC 2 Compliant",
     "trustBadge4": "ZATCA Certified",
     "ctaTitle": "Start your free 14-day trial",
-    "ctaSubtitle": "No credit card required. Full access to all modules. Go live in minutes."
+    "ctaSubtitle": "No credit card required. Full access to all modules. Go live in minutes.",
+    "ctaPrimary": "Start Your 14-Day Free Trial",
+    "ctaSecondary": "Watch a Demo",
+    "screensTitle": "Screenshots",
+    "ctaText": "",
+    "feature1": {
+      "title": "Chained to one office computer",
+      "description": "Need to approve a purchase order from a client meeting? Check inventory while visiting a warehouse? Desktop ERP says no. Your business says you need to."
+    },
+    "feature2": {
+      "title": "No real-time visibility across branches",
+      "description": "Branch managers emailing spreadsheets, warehouse counts that are always outdated, financial reports that take days to compile. Sound familiar?"
+    },
+    "feature3": {
+      "title": "Paying for servers you should not manage",
+      "description": "Server hardware, IT staff for maintenance, backup tapes, power costs — you are running a data center when you should be running your business."
+    },
+    "feature4": {
+      "title": "Feature 4",
+      "description": ""
+    },
+    "feature5": {
+      "title": "Feature 5",
+      "description": ""
+    },
+    "feature6": {
+      "title": "Feature 6",
+      "description": ""
+    }
   },
   "odooPage": {
     "badge": "Official Odoo Partner",
@@ -549,7 +627,36 @@
     "trustBadge3": "Arabic Support",
     "trustBadge4": "MENA Compliance",
     "ctaTitle": "Let's plan your Odoo project",
-    "ctaSubtitle": "Get a free consultation and project estimate from our certified Odoo experts."
+    "ctaSubtitle": "Get a free consultation and project estimate from our certified Odoo experts.",
+    "ctaPrimary": "Get a Free Scope Assessment",
+    "ctaSecondary": "Talk to an Odoo Expert",
+    "featuresTitle": "Features",
+    "screensTitle": "Screenshots",
+    "ctaText": "",
+    "feature1": {
+      "title": "Generic consultants, generic results",
+      "description": "Most Odoo partners copy-paste European workflows into MENA businesses. They do not understand ZATCA, WPS, GOSI, or how business actually works in the Gulf."
+    },
+    "feature2": {
+      "title": "Failed implementations that cost twice",
+      "description": "60% of Odoo projects in the region go over budget or fail entirely. Companies end up paying a second firm to fix what the first one broke."
+    },
+    "feature3": {
+      "title": "No Arabic support when you need it",
+      "description": "Your support ticket goes to a team in Europe who responds in 48 hours — in English. Meanwhile, your Arabic-speaking accountant is stuck and your invoices are late."
+    },
+    "feature4": {
+      "title": "Feature 4",
+      "description": ""
+    },
+    "feature5": {
+      "title": "Feature 5",
+      "description": ""
+    },
+    "feature6": {
+      "title": "Feature 6",
+      "description": ""
+    }
   },
   "about": {
     "heading": "About Falcon Smart Solutions",
@@ -559,10 +666,22 @@
     "vision": "Our Vision",
     "visionText": "To be the leading ERP platform across the MENA region, enabling businesses of all sizes to compete globally while honoring local requirements.",
     "stats": {
-      "clients": { "value": "500+", "label": "Clients Served" },
-      "experience": { "value": "15+", "label": "Years Experience" },
-      "users": { "value": "5,000+", "label": "Active Users" },
-      "industries": { "value": "9", "label": "Industries Covered" }
+      "clients": {
+        "value": "500+",
+        "label": "Clients Served"
+      },
+      "experience": {
+        "value": "15+",
+        "label": "Years Experience"
+      },
+      "users": {
+        "value": "5,000+",
+        "label": "Active Users"
+      },
+      "industries": {
+        "value": "9",
+        "label": "Industries Covered"
+      }
     },
     "whyFalcon": {
       "eyebrow": "Why Falcon",
@@ -588,7 +707,15 @@
       }
     },
     "ctaHeading": "Ready to transform your business?",
-    "ctaSubtitle": "Join 500+ MENA businesses already running on Falcon ERP."
+    "ctaSubtitle": "Join 500+ MENA businesses already running on Falcon ERP.",
+    "heroTitle": "About Falcon Smart Solutions",
+    "heroSubtitle": "Building the future of ERP for the Middle East",
+    "missionTitle": "Our Mission",
+    "valuesTitle": "Our Values",
+    "ctaTitle": "Ready to transform your business?",
+    "ctaText": "Join 500+ MENA businesses already running on Falcon ERP.",
+    "ctaPrimary": "Book a Demo",
+    "ctaSecondary": "Contact Us"
   },
   "legal": {
     "privacyTitle": "Privacy Policy",
@@ -650,7 +777,9 @@
         "title": "How ERP Helps Construction Companies Manage Projects",
         "excerpt": "A specialized guide for construction companies on using ERP to track projects, costs, and resources efficiently."
       }
-    }
+    },
+    "heroTitle": "Latest Articles & News",
+    "heroSubtitle": "Tips and insights on ERP systems and business management in the Middle East"
   },
   "portal": {
     "loginTitle": "Client Portal",
@@ -718,6 +847,31 @@
     "verySatisfied": "Very Satisfied",
     "ratingCommentPlaceholder": "Tell us about your experience (optional)...",
     "submitRating": "Submit Rating",
-    "ratingThanks": "Thank you for your feedback!"
+    "ratingThanks": "Thank you for your feedback!",
+    "myTicketsTitle": "My Tickets",
+    "newTicketTitle": "New Ticket",
+    "submit": "Submit",
+    "ticketDetail": "Ticket",
+    "reply": "Reply"
+  },
+  "careers": {
+    "heroTitle": "Careers",
+    "heroSubtitle": "Coming soon — get in touch.",
+    "cta": "Contact us"
+  },
+  "partners": {
+    "heroTitle": "Partners",
+    "heroSubtitle": "Coming soon — get in touch.",
+    "cta": "Contact us"
+  },
+  "webinars": {
+    "heroTitle": "Webinars",
+    "heroSubtitle": "Coming soon — get in touch.",
+    "cta": "Contact us"
+  },
+  "help": {
+    "heroTitle": "Help Center",
+    "heroSubtitle": "Coming soon — get in touch.",
+    "cta": "Contact us"
   }
 }
