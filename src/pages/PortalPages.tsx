@@ -69,7 +69,7 @@ export function PortalTicketsPage() {
         ) : (
           <div className="space-y-3">
             {tickets.map((ti) => (
-              <LLink key={ti.id} to={`/portal/tickets/${ti.id}`} className="block">
+              <LLink key={ti.id} href={`/portal/tickets/${ti.id}`} className="block">
                 <FCard className="transition hover:border-primary-200 hover:shadow-md">
                   <div className="flex items-center justify-between">
                     <div>
