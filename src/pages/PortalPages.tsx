@@ -95,7 +95,18 @@ export function PortalNewTicketPage() {
     e.preventDefault();
     const fd = new FormData(e.currentTarget);
     const list = loadTickets();
-    list.unshift({ id: crypto.randomUUID(), subject: String(fd.get("subject")), description: String(fd.get("description")), status: "open", createdAt: new Date().toLocaleDateString() });
+    const id = crypto.randomUUID();
+    const description = String(fd.get("description"));
+    list.unshift({
+      id,
+      subject: String(fd.get("subject")),
+      description,
+      status: "open",
+      createdAt: new Date().toLocaleDateString(),
+      messages: [
+        { from: "user", text: description, at: new Date().toISOString() },
+      ],
+    });
     saveTickets(list);
     setDone(true);
   }
