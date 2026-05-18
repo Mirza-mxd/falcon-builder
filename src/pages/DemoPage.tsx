@@ -36,6 +36,8 @@ export default function DemoPage() {
           message: String(fd.get("notes") ?? ""),
           locale,
           payload,
+          hp: String(fd.get("company_website") ?? ""),
+          ts: tsRef.current,
         },
       });
       if (res.ok) setSubmitted(true);
