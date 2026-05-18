@@ -70,6 +70,7 @@ export default function DemoPage() {
                 </div>
               ) : (
                 <form onSubmit={onSubmit} className="space-y-4">
+                  <input type="text" name="company_website" tabIndex={-1} autoComplete="off" aria-hidden="true" className="absolute left-[-9999px] h-0 w-0 opacity-0" />
                   <div className="grid gap-4 sm:grid-cols-2">
                     <Field name="name" label={t("nameLabel")} required />
                     <Field name="email" type="email" label={t("emailLabel")} required />
