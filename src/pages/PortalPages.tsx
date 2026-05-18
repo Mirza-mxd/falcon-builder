@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useTranslations } from "@/lib/i18n";
 import Container from "@/components/ui/Container";
 import FCard from "@/components/ui/FCard";
 import FButton from "@/components/ui/FButton";
+import LLink from "@/components/ui/LLink";
 
-interface Ticket { id: string; subject: string; description: string; status: "open" | "closed"; createdAt: string; }
+interface TicketMessage { from: "user" | "system"; text: string; at: string; }
+interface Ticket { id: string; subject: string; description: string; status: "open" | "closed"; createdAt: string; messages?: TicketMessage[]; }
 
 function loadTickets(): Ticket[] {
   if (typeof window === "undefined") return [];
