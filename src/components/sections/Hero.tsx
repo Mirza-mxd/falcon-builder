@@ -13,7 +13,7 @@ export default function Hero() {
             <span className="mb-4 inline-block text-xs font-bold uppercase tracking-widest text-primary-500">
               {t("label")}
             </span>
-            <h1 className="text-4xl font-extrabold text-white sm:text-5xl lg:text-7xl">
+            <h1 className="text-4xl font-extrabold text-white sm:text-5xl lg:text-5xl">
               {t("headline")}
             </h1>
             <p className="mt-6 max-w-xl text-lg text-text-on-dark/70">
