@@ -189,7 +189,7 @@
     "retail": { "title": "Multi-branch Retail", "description": "Every branch, stock movement, and sale consolidated in real time across locations." },
     "contracting": { "title": "Contracting", "description": "Project costing, progress billing, and profitability tracked per job, not guessed at year-end." },
     "distribution": { "title": "Distribution", "description": "Multi-warehouse stock, pricing, and order flow that basic accounting tools can't handle at scale." },
-    "restaurants": { "title": "Restaurants", "description": "POS, inventory, and cost control connected — so margins are visible, not a monthly surprise." },
+    "restaurants": { "title": "Restaurants", "description": "POS, inventory, and cost control connected, margins are visible, not a monthly surprise." },
     "logistics": { "title": "Logistics", "description": "Operations, fleet, and billing on one platform instead of disconnected systems." },
     "hospitality": { "title": "Hospitality", "description": "Multi-property operations, procurement, and finance unified under one ledger." }
   },
