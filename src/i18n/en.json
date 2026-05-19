@@ -183,7 +183,7 @@
   "industries": {
     "label": "Industries we serve",
     "heading": "Built for businesses that have outgrown basic accounting",
-    "subheading": "From production floors to multi-branch operations — Falcon implements Odoo for the sectors where simple accounting tools hit their limit.",
+    "subheading": "From production floors to multi-branch operations, Falcon implements Odoo for the sectors where simple accounting tools hit their limit.",
     "cta": "Book a demo",
     "manufacturing": { "title": "Manufacturing", "description": "Production, BOMs, and inventory in one system — not spreadsheets bolted onto accounting." },
     "retail": { "title": "Multi-branch Retail", "description": "Every branch, stock movement, and sale consolidated in real time across locations." },
