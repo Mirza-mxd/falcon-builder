@@ -47,8 +47,9 @@
     }
   },
   "whyErpFails": {
-    "heading": "Most MENA businesses overpay for ERP and don't even get compliance",
-    "subheading": "Here's what's costing you money, time, and compliance risk.",
+    "label": "The hidden cost",
+    "heading": "You're overpaying for ERP — and still not compliant",
+    "subheading": "Three reasons most Saudi businesses are paying for the wrong system.",
     "overpay": {
       "title": "You're overpaying for global ERP",
       "description": "SAP and Oracle can cost several times more than Odoo for the same core functions, with implementations that stretch 6–12 months before you see value. You're funding their brand, not your business."
