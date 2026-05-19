@@ -4,9 +4,9 @@ import FCard from "@/components/ui/FCard";
 import LLink from "@/components/ui/LLink";
 
 const PRODUCTS = [
-  { key: "desktopErp", image: "/images/products/falcon-erp-logo.png", href: "/products/falcon-erp-desktop" },
-  { key: "cloudErp", image: "/images/screens/web-modules-dark.png", href: "/products/falcon-cloud" },
   { key: "odooServices", image: "/images/logos/odoo-logo.png", href: "/products/odoo-services" },
+  { key: "cloudErp", image: "/images/screens/web-modules-dark.png", href: "/products/falcon-cloud" },
+  { key: "desktopErp", image: "/images/products/falcon-erp-logo.png", href: "/products/falcon-erp-desktop" },
 ];
 
 export default function ProductTrio() {
