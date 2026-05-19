@@ -18,11 +18,11 @@ export default function HomePage() {
     <>
       <Hero />
       <WhyErpFails />
+      <ProductTrio />
       <TrustLogos />
       <ComplianceBadges />
       <PainPoints />
       <FeatureShowcase />
-      <ProductTrio />
       <WhyChooseFalcon />
       <CtaBanner />
       <IndustryGrid />
