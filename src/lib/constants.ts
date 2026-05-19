@@ -44,7 +44,7 @@ export const INDUSTRIES = [
 ] as const;
 
 export const STATS = [
-  { value: 500, suffix: "+", key: "clients" },
-  { value: 5000, suffix: "+", key: "users" },
-  { value: 1000000, suffix: "+", key: "transactions" },
+  { value: 376, suffix: "+", key: "clients" },
+  { value: 4927, suffix: "+", key: "users" },
+  { value: 893000, suffix: "+", key: "transactions" },
 ] as const;
