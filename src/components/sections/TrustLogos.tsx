@@ -1,5 +1,4 @@
-import { useTranslations, useLocale } from "@/lib/i18n";
-import Container from "@/components/ui/Container";
+import { useLocale } from "@/lib/i18n";
 
 // Per-logo display height (px) calibrated so the visible content height
 // looks uniform across logos with varying internal padding/whitespace.
