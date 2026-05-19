@@ -27,7 +27,7 @@ export function ProductDetailPage({ ns, hero, screens }: { ns: "desktopPage" | "
         <Container>
           <h2 className="mb-12 text-center text-text-primary">{t("featuresTitle")}</h2>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {[1,2,3,4,5,6].map((i) => (
+            {[1,2,3].map((i) => (
               <FCard key={i}>
                 <h3 className="mb-2 text-lg font-bold text-text-primary">{t(`feature${i}.title`)}</h3>
                 <p className="text-sm text-text-secondary">{t(`feature${i}.description`)}</p>
