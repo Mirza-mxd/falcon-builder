@@ -1,4 +1,5 @@
 import Hero from "@/components/sections/Hero";
+import WhyErpFails from "@/components/sections/WhyErpFails";
 import TrustLogos from "@/components/sections/TrustLogos";
 import ComplianceBadges from "@/components/sections/ComplianceBadges";
 import PainPoints from "@/components/sections/PainPoints";
@@ -15,6 +16,7 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      <WhyErpFails />
       <TrustLogos />
       <ComplianceBadges />
       <PainPoints />
