@@ -21,7 +21,7 @@ export default function HomePage() {
       <ProductTrio />
       <WhyChooseFalcon />
       
-      <PainPoints />
+      
       <FeatureShowcase />
       <CtaBanner />
       <IndustryGrid />
