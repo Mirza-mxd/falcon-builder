@@ -14,7 +14,10 @@ export default function WhyErpFails() {
     <section className="bg-white mx-0 pt-2 pb-[50px]">
       <Container>
         <div className="mb-12 text-center">
-          <h2 className="text-text-primary">{t("heading")}</h2>
+          <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-primary-500">
+            {t("label")}
+          </p>
+          <h2 className="mx-auto max-w-3xl text-text-primary">{t("heading")}</h2>
           <p className="mx-auto mt-4 max-w-2xl text-text-secondary">{t("subheading")}</p>
         </div>
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3 items-stretch">
