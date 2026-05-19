@@ -1,3 +1,4 @@
+import WhyChooseFalcon from "@/components/sections/WhyChooseFalcon";
 import Hero from "@/components/sections/Hero";
 import WhyErpFails from "@/components/sections/WhyErpFails";
 import TrustLogos from "@/components/sections/TrustLogos";
@@ -22,6 +23,7 @@ export default function HomePage() {
       <PainPoints />
       <FeatureShowcase />
       <ProductTrio />
+      <WhyChooseFalcon />
       <CtaBanner />
       <IndustryGrid />
       <StatsCounter />
