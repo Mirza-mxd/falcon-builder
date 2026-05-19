@@ -20,7 +20,7 @@ export default function HomePage() {
       <ProductTrio />
       <WhyChooseFalcon />
       <TrustLogos />
-      <ComplianceBadges />
+      
       <PainPoints />
       <FeatureShowcase />
       <CtaBanner />
