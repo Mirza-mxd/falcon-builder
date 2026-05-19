@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 
 const FEATURES = [
   { key: "feature1", imageStart: true, image: "/images/screens/desktop-invoice.png" },
-  { key: "feature2", imageStart: false, image: "/images/screens/web-modules.png" },
+  
   
 ];
 
