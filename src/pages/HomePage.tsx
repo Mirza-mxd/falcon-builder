@@ -22,7 +22,7 @@ export default function HomePage() {
       <WhyChooseFalcon />
       
       
-      <FeatureShowcase />
+      
       <CtaBanner />
       <IndustryGrid />
       <StatsCounter />
