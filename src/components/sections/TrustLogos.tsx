@@ -1,4 +1,4 @@
-import { useTranslations } from "@/lib/i18n";
+import { useTranslations, useLocale } from "@/lib/i18n";
 import Container from "@/components/ui/Container";
 
 const LOGOS = [
@@ -10,6 +10,8 @@ const LOGOS = [
 
 export default function TrustLogos() {
   const t = useTranslations("trust");
+  const locale = useLocale();
+  const isRTL = locale === "ar";
   return (
     <section className="bg-surface py-16 lg:py-24">
       <Container>
@@ -19,11 +21,17 @@ export default function TrustLogos() {
       <div className="group relative overflow-hidden" dir="ltr">
         <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-surface to-transparent" />
         <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-surface to-transparent" />
-        <div className="flex w-max animate-marquee items-center gap-6 group-hover:[animation-play-state:paused]">
+        <div
+          className="flex w-max items-center gap-12 group-hover:[animation-play-state:paused]"
+          style={{ animation: `${isRTL ? "marquee-reverse" : "marquee"} 60s linear infinite` }}
+        >
           {[...LOGOS, ...LOGOS].map((file, i) => (
-            <div key={i} className="flex h-32 w-[220px] shrink-0 items-center justify-center rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
-              <img src={`/images/clients/${file}`} alt="" className="max-h-20 max-w-[170px] object-contain opacity-85 transition-all hover:opacity-100" />
-            </div>
+            <img
+              key={i}
+              src={`/images/clients/${file}`}
+              alt=""
+              className="h-10 w-auto shrink-0 object-contain opacity-60 transition-opacity duration-300 hover:opacity-90 [filter:grayscale(1)_brightness(0)]"
+            />
           ))}
         </div>
       </div>
