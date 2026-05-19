@@ -36,17 +36,17 @@ export default function Navbar() {
         scrolled && "shadow-navbar"
       )}
     >
-      <Container className="flex h-16 items-center justify-between lg:h-[72px]">
+      <Container className="flex h-16 items-center justify-between md:h-[72px]">
         <LLink href="/" className="shrink-0">
           <img
             src="/images/logos/falcon-logo.png"
             alt="Falcon Smart Solutions"
-            className="h-10 w-auto lg:h-12"
+            className="h-10 w-auto md:h-12"
           />
         </LLink>
 
         {/* Desktop nav */}
-        <nav className="hidden lg:flex lg:items-center lg:gap-1">
+        <nav className="hidden md:flex md:items-center md:gap-1">
           {NAV_ITEMS.map((item) =>
             "children" in item ? (
               <div key={item.key} className="group relative">
@@ -100,7 +100,7 @@ export default function Navbar() {
           )}
         </nav>
 
-        <div className="hidden lg:flex lg:items-center lg:gap-2">
+        <div className="hidden md:flex md:items-center md:gap-2">
           <LanguageToggle />
           <LLink
             href="/login"
@@ -117,7 +117,7 @@ export default function Navbar() {
         <button
           type="button"
           onClick={() => setMobileOpen((o) => !o)}
-          className="rounded-lg p-2 text-text-primary hover:bg-gray-100 lg:hidden"
+          className="rounded-lg p-2 text-text-primary hover:bg-gray-100 md:hidden"
           aria-label={t("nav.openMenu")}
         >
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="size-6">
@@ -128,7 +128,7 @@ export default function Navbar() {
 
       {/* Mobile menu drawer */}
       {mobileOpen && (
-        <div className="lg:hidden border-t bg-white shadow-card">
+        <div className="md:hidden border-t bg-white shadow-card">
           <Container className="py-4">
             <nav>
               <ul className="space-y-1">
