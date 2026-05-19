@@ -36,7 +36,7 @@ export default function Hero() {
           </div>
           <div className="flex justify-center lg:justify-end">
             <div className="relative w-full max-w-[560px]">
-              <img src="/images/screens/falcon-desktop-hero.png" alt="Falcon ERP Platform" className="h-auto w-full rounded-2xl shadow-2xl shadow-primary-500/20 ring-1 ring-white/10" />
+              <img src="/images/screens/falcon-odoo-apps.png" alt="Falcon ERP Platform" className="h-auto w-full rounded-xl shadow-2xl shadow-primary-500/20 ring-1 ring-white/10" />
               <div className="absolute -top-12 -end-12 h-48 w-48 rounded-full bg-primary-500/20 blur-3xl" />
               <div className="absolute -bottom-8 -start-8 h-36 w-36 rounded-full bg-cyan-400/15 blur-2xl" />
             </div>
