@@ -18,7 +18,7 @@ const LOGOS: { file: string; h: number }[] = [
 ];
 
 export default function TrustLogos() {
-  const t = useTranslations("trust");
+  
   const locale = useLocale();
   const isRTL = locale === "ar";
   return (
