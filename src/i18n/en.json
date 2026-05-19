@@ -62,6 +62,26 @@
       "description": "Cloud-only global ERPs store your financial data on servers outside Saudi Arabia. Under PDPL, that's not just a setting, it's a regulatory exposure most businesses don't realize they've accepted."
     }
   },
+  "whyChooseFalcon": {
+    "heading": "Why businesses choose Falcon",
+    "subheading": "Enterprise-grade ERP, built for Saudi compliance — without the global price tag.",
+    "zatca": {
+      "title": "ZATCA compliance, built in from day one",
+      "description": "Fatoora e-invoicing isn't an add-on we configure later, it's part of how we implement Odoo. You're Phase 2 ready before you go live, not scrambling before a deadline."
+    },
+    "value": {
+      "title": "Enterprise power, without enterprise pricing",
+      "description": "Built on Odoo, you get the modules global ERPs charge a premium for — accounting, inventory, sales, HR — at a fraction of the cost, and live in weeks, not quarters."
+    },
+    "data": {
+      "title": "Your data stays in the Kingdom",
+      "description": "We deploy so your financial data stays inside Saudi Arabia, making PDPL compliance the default, not something you discover you've lost."
+    },
+    "partner": {
+      "title": "Certified Odoo Partner",
+      "description": "We're an officially recognized Odoo partner — not resellers. That means certified expertise, direct access to Odoo's roadmap, and implementations done to standard."
+    }
+  },
   "painPoints": {
     "heading": "Most MENA businesses overpay for ERP — and don't even get compliance",
     "subheading": "Here's what's costing you money, time, and compliance risk.",
