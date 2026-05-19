@@ -8,7 +8,7 @@ export default function MobileBottomBar() {
 
   return (
     <div
-      className="fixed inset-x-0 bottom-0 z-30 border-t border-gray-100 bg-white shadow-navbar lg:hidden"
+      className="fixed inset-x-0 bottom-0 z-30 border-t border-gray-100 bg-white shadow-navbar md:hidden"
       style={{ paddingBottom: "env(safe-area-inset-bottom, 0px)" }}
     >
       <div className="flex items-center gap-3 p-3">

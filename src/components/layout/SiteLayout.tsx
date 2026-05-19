@@ -10,7 +10,7 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
     <I18nProvider>
       <DirEffect />
       <Navbar />
-      <main className="pb-20 lg:pb-0">{children}</main>
+      <main className="pb-20 md:pb-0">{children}</main>
       <Footer />
       <WhatsAppWidget />
       <MobileBottomBar />
