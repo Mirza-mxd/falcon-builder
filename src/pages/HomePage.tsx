@@ -23,6 +23,7 @@ export default function HomePage() {
       <PainPoints />
       <FeatureShowcase />
       <ProductTrio />
+      <WhyChooseFalcon />
       <CtaBanner />
       <IndustryGrid />
       <StatsCounter />
