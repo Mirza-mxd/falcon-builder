@@ -117,21 +117,21 @@
     }
   },
   "products": {
-    "heading": "Falcon solutions extend across your entire business",
-    "subheading": "Choose the deployment that fits your business.",
+    "heading": "Choose how you deploy",
+    "subheading": "On-premise, cloud, or Odoo, built for Saudi compliance.",
     "desktopErp": {
       "name": "Falcon Desktop ERP",
-      "price": "Perpetual license from $550/user",
+      "price": "Runs entirely in-house",
       "description": "Full on-premise control with complete data sovereignty"
     },
     "cloudErp": {
       "name": "Falcon Cloud ERP",
-      "price": "Just $15/user/month",
+      "price": "Live fast, scale faster",
       "description": "Work from anywhere, sync everywhere"
     },
     "odooServices": {
       "name": "Odoo Services",
-      "price": "Official Odoo Partner",
+      "price": "Live in weeks, not quarters",
       "description": "MENA-compliant Odoo implementations"
     },
     "learnMore": "Learn More"
