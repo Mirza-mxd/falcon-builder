@@ -16,10 +16,10 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      <TrustLogos />
       <WhyErpFails />
       <ProductTrio />
       <WhyChooseFalcon />
-      <TrustLogos />
       
       <PainPoints />
       <FeatureShowcase />

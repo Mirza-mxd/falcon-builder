@@ -22,10 +22,10 @@ export default function TrustLogos() {
   const locale = useLocale();
   const isRTL = locale === "ar";
   return (
-    <section className="bg-surface py-16 lg:py-24">
+    <section className="bg-white py-16 lg:py-24">
       <div className="group relative overflow-hidden" dir="ltr">
-        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-surface to-transparent" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-surface to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-white to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-white to-transparent" />
         <div
           className="flex w-max items-center gap-12 group-hover:[animation-play-state:paused]"
           style={{ animation: `${isRTL ? "marquee-reverse" : "marquee"} 60s linear infinite` }}
