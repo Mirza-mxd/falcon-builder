@@ -2,8 +2,8 @@ import { useTranslations, useLocale } from "@/lib/i18n";
 import Container from "@/components/ui/Container";
 
 const LOGOS = [
-  "haddad-group.svg","capital-safety.png","business-capital.png","diamond-home.jpg",
-  "elite-construction.png","global-conveyor.png","geodesy.png","benchmark.png",
+  "haddad-group.svg","capital-safety.png","business-capital.png",
+  "elite-construction.png","benchmark.png",
   "echo-art.png","diar.webp","almada.png","habib-trading.png","la-verde.png",
   "mahara.png","lozom.png",
 ];
