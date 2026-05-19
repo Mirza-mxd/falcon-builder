@@ -180,17 +180,17 @@
     "ctaConsult": "Book a Consultation"
   },
   "industries": {
-    "heading": "One platform. Every industry.",
-    "retail": "Retail & E-Commerce",
-    "manufacturing": "Manufacturing",
-    "construction": "Construction & Contracting",
-    "realEstate": "Real Estate",
-    "hospitality": "Hospitality & F&B",
-    "healthcare": "Healthcare",
-    "education": "Education",
-    "logistics": "Logistics & Fleet",
-    "trading": "Trading & Wholesale",
-    "learnMore": "Learn More"
+    "label": "Industries we serve",
+    "heading": "Built for businesses that have outgrown basic accounting",
+    "subheading": "From production floors to multi-branch operations — Falcon implements Odoo for the sectors where simple accounting tools hit their limit.",
+    "cta": "Book a demo",
+    "manufacturing": { "title": "Manufacturing", "description": "Production, BOMs, and inventory in one system — not spreadsheets bolted onto accounting." },
+    "retail": { "title": "Multi-branch Retail", "description": "Every branch, stock movement, and sale consolidated in real time across locations." },
+    "contracting": { "title": "Contracting", "description": "Project costing, progress billing, and profitability tracked per job, not guessed at year-end." },
+    "distribution": { "title": "Distribution", "description": "Multi-warehouse stock, pricing, and order flow that basic accounting tools can't handle at scale." },
+    "restaurants": { "title": "Restaurants", "description": "POS, inventory, and cost control connected — so margins are visible, not a monthly surprise." },
+    "logistics": { "title": "Logistics", "description": "Operations, fleet, and billing on one platform instead of disconnected systems." },
+    "hospitality": { "title": "Hospitality", "description": "Multi-property operations, procurement, and finance unified under one ledger." }
   },
   "stats": {
     "heading": "Falcon delivers excellence",
