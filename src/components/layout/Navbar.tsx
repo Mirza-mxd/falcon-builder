@@ -36,12 +36,12 @@ export default function Navbar() {
         scrolled && "shadow-navbar"
       )}
     >
-      <Container className="flex h-16 items-center justify-between md:h-[72px]">
+      <Container className="flex h-20 items-center justify-between md:h-24">
         <LLink href="/" className="shrink-0">
           <img
             src="/images/logos/falcon-logo.png"
             alt="Falcon Smart Solutions"
-            className="h-10 w-auto md:h-12"
+            className="h-16 w-auto md:h-20"
           />
         </LLink>
 
