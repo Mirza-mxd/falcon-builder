@@ -1,11 +1,21 @@
 import { useTranslations, useLocale } from "@/lib/i18n";
 import Container from "@/components/ui/Container";
 
-const LOGOS = [
-  "haddad-group.svg","capital-safety.png","business-capital.png",
-  "elite-construction.png","benchmark.png",
-  "echo-art.png","diar.webp","almada.png","habib-trading.png","la-verde.png",
-  "mahara.png","lozom.png",
+// Per-logo display height (px) calibrated so the visible content height
+// looks uniform across logos with varying internal padding/whitespace.
+const LOGOS: { file: string; h: number }[] = [
+  { file: "haddad-group.svg", h: 48 },
+  { file: "capital-safety.png", h: 72 },
+  { file: "business-capital.png", h: 88 },
+  { file: "elite-construction.png", h: 40 },
+  { file: "benchmark.png", h: 32 },
+  { file: "echo-art.png", h: 68 },
+  { file: "diar.webp", h: 44 },
+  { file: "almada.png", h: 40 },
+  { file: "habib-trading.png", h: 36 },
+  { file: "la-verde.png", h: 96 },
+  { file: "mahara.png", h: 80 },
+  { file: "lozom.png", h: 64 },
 ];
 
 export default function TrustLogos() {
@@ -25,16 +35,19 @@ export default function TrustLogos() {
           className="flex w-max items-center gap-12 group-hover:[animation-play-state:paused]"
           style={{ animation: `${isRTL ? "marquee-reverse" : "marquee"} 60s linear infinite` }}
         >
-          {[...LOGOS, ...LOGOS].map((file, i) => (
-            <img
-              key={i}
-              src={`/images/clients/${file}`}
-              alt=""
-              className="h-10 w-auto shrink-0 object-contain opacity-60 transition-opacity duration-300 hover:opacity-90 [filter:grayscale(1)_brightness(0)]"
-            />
+          {[...LOGOS, ...LOGOS].map((logo, i) => (
+            <div key={i} className="flex h-24 w-32 shrink-0 items-center justify-center sm:w-40">
+              <img
+                src={`/images/clients/${logo.file}`}
+                alt=""
+                style={{ height: `${logo.h}px` }}
+                className="w-auto max-w-full object-contain opacity-60 transition-opacity duration-300 hover:opacity-90 [filter:grayscale(1)_brightness(0)]"
+              />
+            </div>
           ))}
         </div>
       </div>
+
       <Container>
         <div className="mt-12 flex flex-wrap items-center justify-center gap-8 sm:gap-16">
           <div className="text-center">
