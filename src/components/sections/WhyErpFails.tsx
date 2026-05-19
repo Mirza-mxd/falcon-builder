@@ -11,7 +11,7 @@ const CARDS: { key: string; Icon: LucideIcon; accent: string; iconBg: string }[]
 export default function WhyErpFails() {
   const t = useTranslations("whyErpFails");
   return (
-    <section className="bg-white section-padding">
+    <section className="bg-white section-padding mx-0 py-[50px]">
       <Container>
         <div className="mb-12 text-center">
           <h2 className="text-text-primary">{t("heading")}</h2>
