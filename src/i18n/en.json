@@ -46,6 +46,22 @@
       "description": "Certified Odoo implementation partner"
     }
   },
+  "whyErpFails": {
+    "heading": "Most MENA businesses overpay for ERP and don't even get compliance",
+    "subheading": "Here's what's costing you money, time, and compliance risk.",
+    "overpay": {
+      "title": "You're overpaying for global ERP",
+      "description": "SAP and Oracle can cost several times more than Odoo for the same core functions, with implementations that stretch 6–12 months before you see value. You're funding their brand, not your business."
+    },
+    "zatca": {
+      "title": "ZATCA is treated as an add-on",
+      "description": "Most ERPs bolt Fatoora e-invoicing on after the fact. With Phase 2 now mandatory for businesses over SAR 375,000 in turnover, a single non-compliant invoice is a penalty, not a software bug you can fix later."
+    },
+    "data": {
+      "title": "Your data leaves the Kingdom",
+      "description": "Cloud-only global ERPs store your financial data on servers outside Saudi Arabia. Under PDPL, that's not just a setting, it's a regulatory exposure most businesses don't realize they've accepted."
+    }
+  },
   "painPoints": {
     "heading": "Most MENA businesses overpay for ERP — and don't even get compliance",
     "subheading": "Here's what's costing you money, time, and compliance risk.",
