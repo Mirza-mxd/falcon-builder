@@ -21,16 +21,16 @@ export default function WhyChooseFalcon() {
   const t = useTranslations("whyChooseFalcon");
   return (
     <section className="bg-white section-padding">
-      <Container>
+      <Container className="max-w-[88rem]">
         <div className="mb-12 text-center">
           <h2 className="text-text-primary">{t("heading")}</h2>
           <p className="mx-auto mt-4 max-w-2xl text-text-secondary">{t("subheading")}</p>
         </div>
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4 items-stretch">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 items-stretch">
           {CARDS.map(({ key, Icon, image, accent, iconBg }) => (
             <div
               key={key}
-              className="flex h-full flex-col items-center rounded-[var(--radius-card)] bg-white p-8 text-center shadow-card transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1"
+              className="flex h-full flex-col items-center rounded-[var(--radius-card)] bg-white px-8 py-6 lg:px-10 lg:py-7 text-center shadow-card transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1"
             >
               <div className={`mb-5 flex h-16 w-16 items-center justify-center rounded-2xl ${iconBg}`}>
                 {Icon ? (
