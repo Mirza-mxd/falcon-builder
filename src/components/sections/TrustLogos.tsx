@@ -42,7 +42,7 @@ export default function TrustLogos() {
           ))}
         </div>
       </div>
-
+      <div className="mt-6 h-px w-full bg-gradient-to-r from-transparent via-slate-300 to-transparent lg:mt-8" />
     </section>
   );
 }
