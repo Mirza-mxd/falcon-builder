@@ -2,8 +2,8 @@ export const COMPANY = {
   name: { en: "Falcon Smart Solutions", ar: "فالكون للحلول الذكية" },
   website: "falcon-it.sa",
   email: "info@falcon-it.sa",
-  phone: { ksa: "+966500000000", egypt: "+201000000000" },
-  whatsapp: "966500000000",
+  phone: { ksa: "+966568051090", egypt: "+966568051090" },
+  whatsapp: "966568051090",
   address: {
     ksa: { en: "Riyadh, Saudi Arabia", ar: "الرياض، المملكة العربية السعودية" },
     egypt: { en: "Cairo, Egypt", ar: "القاهرة، مصر" },
