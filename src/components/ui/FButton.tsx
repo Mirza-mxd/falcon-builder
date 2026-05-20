@@ -74,10 +74,15 @@ const FButton = forwardRef<HTMLButtonElement | HTMLAnchorElement, FButtonProps>(
           </a>
         );
       }
+      const [pathOnly, queryString] = href.split("?");
+      const search = queryString
+        ? Object.fromEntries(new URLSearchParams(queryString))
+        : undefined;
       return (
         <Link
           ref={ref as React.Ref<HTMLAnchorElement>}
-          to={localePath(href)}
+          to={localePath(pathOnly)}
+          search={search as never}
           className={classes}
           onClick={onClick}
         >
