@@ -82,7 +82,23 @@ export default function ContactPage() {
                       <Field name="name" label="Your Name" required />
                       <Field name="email" type="email" label="Email Address" required />
                       <Field name="phone" label="Phone Number" />
-                      <Field name="subject" label="Subject" required />
+                      <div>
+                        <label className="mb-1 block text-sm font-medium text-text-primary">
+                          {t("subjectLabel")} *
+                        </label>
+                        <select
+                          name="subject"
+                          required
+                          value={subject}
+                          onChange={(e) => setSubject(e.target.value as SubjectKey | "")}
+                          className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 focus:border-primary-500 focus:outline-none"
+                        >
+                          <option value="" disabled>{t("subjectPlaceholder")}</option>
+                          {SUBJECT_KEYS.map((k) => (
+                            <option key={k} value={k}>{t(`subjectOptions.${k}`)}</option>
+                          ))}
+                        </select>
+                      </div>
                     </div>
                     <div>
                       <label className="mb-1 block text-sm font-medium text-text-primary">Your Message *</label>
