@@ -20,7 +20,7 @@ export default function Hero() {
               {t("subtitle")}
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-4 lg:justify-start">
-              <FButton variant="cta" size="lg" href="/contact">{t("ctaPrimary")}</FButton>
+              <FButton variant="cta" size="lg" href="/contact?subject=quote">{t("ctaPrimary")}</FButton>
               <FButton variant="dark-outline" size="lg" href="/demo">{t("ctaSecondary")}</FButton>
             </div>
             <div className="mt-6 flex flex-col gap-2 text-sm text-text-on-dark/60 sm:flex-row sm:gap-6">

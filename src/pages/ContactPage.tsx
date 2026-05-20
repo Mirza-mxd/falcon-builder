@@ -1,14 +1,22 @@
 import { useEffect, useRef, useState } from "react";
-import { useLocale } from "@/lib/i18n";
+import { useLocale, useTranslations } from "@/lib/i18n";
 import { useServerFn } from "@tanstack/react-start";
+import { useSearch } from "@tanstack/react-router";
 import { submitLead } from "@/lib/leads.functions";
 import Container from "@/components/ui/Container";
 import FCard from "@/components/ui/FCard";
 import FButton from "@/components/ui/FButton";
 
+const SUBJECT_KEYS = ["quote", "demo", "learn", "zatca", "general"] as const;
+type SubjectKey = (typeof SUBJECT_KEYS)[number];
+
 export default function ContactPage() {
   const locale = useLocale();
+  const t = useTranslations("contact");
   const submit = useServerFn(submitLead);
+  const search = useSearch({ strict: false }) as { subject?: string };
+  const initialSubject: SubjectKey | "" = search.subject === "quote" ? "quote" : "";
+  const [subject, setSubject] = useState<SubjectKey | "">(initialSubject);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
@@ -20,6 +28,7 @@ export default function ContactPage() {
     setError(null);
     setLoading(true);
     const fd = new FormData(e.currentTarget);
+    const subjectValue = String(fd.get("subject") ?? "");
     try {
       const res = await submit({
         data: {
@@ -27,9 +36,10 @@ export default function ContactPage() {
           name: String(fd.get("name") ?? ""),
           email: String(fd.get("email") ?? ""),
           phone: String(fd.get("phone") ?? ""),
-          company: String(fd.get("subject") ?? ""),
+          company: "",
           message: String(fd.get("message") ?? ""),
           locale,
+          payload: { subject: subjectValue },
           hp: String(fd.get("company_website") ?? ""),
           ts: tsRef.current,
         },
@@ -72,7 +82,23 @@ export default function ContactPage() {
                       <Field name="name" label="Your Name" required />
                       <Field name="email" type="email" label="Email Address" required />
                       <Field name="phone" label="Phone Number" />
-                      <Field name="subject" label="Subject" required />
+                      <div>
+                        <label className="mb-1 block text-sm font-medium text-text-primary">
+                          {t("subjectLabel")} *
+                        </label>
+                        <select
+                          name="subject"
+                          required
+                          value={subject}
+                          onChange={(e) => setSubject(e.target.value as SubjectKey | "")}
+                          className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 focus:border-primary-500 focus:outline-none"
+                        >
+                          <option value="" disabled>{t("subjectPlaceholder")}</option>
+                          {SUBJECT_KEYS.map((k) => (
+                            <option key={k} value={k}>{t(`subjectOptions.${k}`)}</option>
+                          ))}
+                        </select>
+                      </div>
                     </div>
                     <div>
                       <label className="mb-1 block text-sm font-medium text-text-primary">Your Message *</label>
