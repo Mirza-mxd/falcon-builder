@@ -213,7 +213,7 @@ export default function FalconErpDesktopPage() {
               <FButton variant="cta" size="lg" href="/contact">Get My Free Assessment</FButton>
               <p className="text-sm text-text-on-dark/60">We will respond within 24 hours. No spam, ever.</p>
               <p className="text-sm text-text-on-dark/60">
-                Or call us directly: <a href="tel:+966501234567" className="font-semibold text-primary-400">+966 50 123 4567</a>
+                Or call us directly: <a href="tel:+966568051090" className="font-semibold text-primary-400">+966 56 805 1090</a>
               </p>
             </div>
             <ul className="mt-10 flex flex-wrap justify-center gap-x-8 gap-y-3 text-sm text-text-on-dark/80">
