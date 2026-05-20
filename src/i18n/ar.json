@@ -363,6 +363,15 @@
     "companyLabel": "الشركة",
     "messageLabel": "رسالتك",
     "officeLabel": "مكاتبنا",
+    "subjectLabel": "الموضوع",
+    "subjectPlaceholder": "اختر موضوعًا",
+    "subjectOptions": {
+      "quote": "اطلب عرض سعر",
+      "demo": "احجز عرض تجريبي",
+      "learn": "تعرّف على فالكون ERP",
+      "zatca": "استفسار عن الامتثال للمرحلة الثانية من فاتورة هيئة الزكاة",
+      "general": "استفسار عام"
+    },
     "successTitle": "شكرًا لك!",
     "successText": "تم إرسال الرسالة! سنرد خلال 24 ساعة."
   },

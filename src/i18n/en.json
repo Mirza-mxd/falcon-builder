@@ -363,6 +363,15 @@
     "companyLabel": "Company",
     "messageLabel": "Your Message",
     "officeLabel": "Offices",
+    "subjectLabel": "Subject",
+    "subjectPlaceholder": "Select a topic",
+    "subjectOptions": {
+      "quote": "Request a Quote",
+      "demo": "Book a Demo",
+      "learn": "Learn more about Falcon ERP",
+      "zatca": "ZATCA Phase 2 compliance question",
+      "general": "General inquiry"
+    },
     "successTitle": "Thank you!",
     "successText": "Message sent! We'll respond within 24 hours."
   },
