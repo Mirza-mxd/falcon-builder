@@ -1,10 +1,14 @@
 import { useEffect, useRef, useState } from "react";
-import { useLocale } from "@/lib/i18n";
+import { useLocale, useTranslations } from "@/lib/i18n";
 import { useServerFn } from "@tanstack/react-start";
+import { useSearch } from "@tanstack/react-router";
 import { submitLead } from "@/lib/leads.functions";
 import Container from "@/components/ui/Container";
 import FCard from "@/components/ui/FCard";
 import FButton from "@/components/ui/FButton";
+
+const SUBJECT_KEYS = ["quote", "demo", "learn", "zatca", "general"] as const;
+type SubjectKey = (typeof SUBJECT_KEYS)[number];
 
 export default function ContactPage() {
   const locale = useLocale();
