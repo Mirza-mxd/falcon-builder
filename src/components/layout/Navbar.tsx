@@ -108,7 +108,7 @@ export default function Navbar() {
           >
             {t("nav.login")}
           </LLink>
-          <FButton variant="cta" size="sm" href="/demo">
+          <FButton variant="cta" size="sm" href="/contact?subject=quote">
             {t("nav.startTrial")}
           </FButton>
         </div>
@@ -169,7 +169,7 @@ export default function Navbar() {
               <FButton variant="outline" href="/login" className="w-full">
                 {t("nav.login")}
               </FButton>
-              <FButton variant="cta" href="/demo" className="w-full">
+              <FButton variant="cta" href="/contact?subject=quote" className="w-full">
                 {t("nav.startTrial")}
               </FButton>
             </div>
