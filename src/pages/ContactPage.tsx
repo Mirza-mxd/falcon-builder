@@ -12,7 +12,11 @@ type SubjectKey = (typeof SUBJECT_KEYS)[number];
 
 export default function ContactPage() {
   const locale = useLocale();
+  const t = useTranslations("contact");
   const submit = useServerFn(submitLead);
+  const search = useSearch({ strict: false }) as { subject?: string };
+  const initialSubject: SubjectKey | "" = search.subject === "quote" ? "quote" : "";
+  const [subject, setSubject] = useState<SubjectKey | "">(initialSubject);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
@@ -24,6 +28,7 @@ export default function ContactPage() {
     setError(null);
     setLoading(true);
     const fd = new FormData(e.currentTarget);
+    const subjectValue = String(fd.get("subject") ?? "");
     try {
       const res = await submit({
         data: {
@@ -31,9 +36,10 @@ export default function ContactPage() {
           name: String(fd.get("name") ?? ""),
           email: String(fd.get("email") ?? ""),
           phone: String(fd.get("phone") ?? ""),
-          company: String(fd.get("subject") ?? ""),
+          company: "",
           message: String(fd.get("message") ?? ""),
           locale,
+          payload: { subject: subjectValue },
           hp: String(fd.get("company_website") ?? ""),
           ts: tsRef.current,
         },
