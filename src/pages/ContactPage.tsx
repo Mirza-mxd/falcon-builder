@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { useLocale, useTranslations } from "@/lib/i18n";
+import { useIsRTL, useLocale, useTranslations } from "@/lib/i18n";
 import { useServerFn } from "@tanstack/react-start";
 import { useSearch } from "@tanstack/react-router";
 import { submitLead } from "@/lib/leads.functions";
@@ -10,8 +10,47 @@ import FButton from "@/components/ui/FButton";
 const SUBJECT_KEYS = ["quote", "demo", "learn", "zatca", "general"] as const;
 type SubjectKey = (typeof SUBJECT_KEYS)[number];
 
+const C = {
+  en: {
+    heroTitle: "Get in Touch",
+    heroSubtitle: "Our team is ready to help you find the right ERP solution.",
+    name: "Your Name",
+    email: "Email Address",
+    phone: "Phone Number",
+    message: "Your Message",
+    submit: "Send Message",
+    sending: "...",
+    sent: "Message sent",
+    sentBody: "We will get back to you shortly.",
+    officeTitle: "Saudi Arabia Office",
+    officeCity: "Riyadh, Saudi Arabia",
+    waTitle: "Prefer WhatsApp?",
+    waBody: "Chat with our team instantly for quick questions.",
+    waCta: "Chat on WhatsApp",
+  },
+  ar: {
+    heroTitle: "تواصل معنا",
+    heroSubtitle: "فريقنا جاهز لمساعدتك في إيجاد حل ERP المناسب.",
+    name: "اسمك",
+    email: "البريد الإلكتروني",
+    phone: "رقم الهاتف",
+    message: "رسالتك",
+    submit: "إرسال الرسالة",
+    sending: "...",
+    sent: "تم إرسال الرسالة",
+    sentBody: "سنرد عليك قريباً.",
+    officeTitle: "مكتب المملكة العربية السعودية",
+    officeCity: "الرياض، المملكة العربية السعودية",
+    waTitle: "تفضل واتساب؟",
+    waBody: "تحدث مع فريقنا فوراً للأسئلة السريعة.",
+    waCta: "محادثة عبر واتساب",
+  },
+} as const;
+
 export default function ContactPage() {
   const locale = useLocale();
+  const isRTL = useIsRTL();
+  const c = isRTL ? C.ar : C.en;
   const t = useTranslations("contact");
   const submit = useServerFn(submitLead);
   const search = useSearch({ strict: false }) as { subject?: string };
@@ -57,10 +96,8 @@ export default function ContactPage() {
     <>
       <section className="bg-dark py-20 text-center">
         <Container>
-          <h1 className="text-4xl font-extrabold text-white sm:text-5xl">Get in Touch</h1>
-          <p className="mx-auto mt-4 max-w-2xl text-text-on-dark/70">
-            Our team is ready to help you find the right ERP solution.
-          </p>
+          <h1 className="text-4xl font-extrabold text-white sm:text-5xl">{c.heroTitle}</h1>
+          <p className="mx-auto mt-4 max-w-2xl text-text-on-dark/70">{c.heroSubtitle}</p>
         </Container>
       </section>
 
@@ -72,16 +109,16 @@ export default function ContactPage() {
                 {submitted ? (
                   <div className="py-12 text-center">
                     <div className="mb-4 text-5xl">✅</div>
-                    <h3 className="text-text-primary">Message sent</h3>
-                    <p className="mt-2 text-text-secondary">We will get back to you shortly.</p>
+                    <h3 className="text-text-primary">{c.sent}</h3>
+                    <p className="mt-2 text-text-secondary">{c.sentBody}</p>
                   </div>
                 ) : (
                   <form onSubmit={onSubmit} className="space-y-4">
                     <input type="text" name="company_website" tabIndex={-1} autoComplete="off" aria-hidden="true" className="absolute left-[-9999px] h-0 w-0 opacity-0" />
                     <div className="grid gap-4 sm:grid-cols-2">
-                      <Field name="name" label="Your Name" required />
-                      <Field name="email" type="email" label="Email Address" required />
-                      <Field name="phone" label="Phone Number" />
+                      <Field name="name" label={c.name} required />
+                      <Field name="email" type="email" label={c.email} required />
+                      <Field name="phone" label={c.phone} />
                       <div>
                         <label className="mb-1 block text-sm font-medium text-text-primary">
                           {t("subjectLabel")} *
@@ -101,12 +138,12 @@ export default function ContactPage() {
                       </div>
                     </div>
                     <div>
-                      <label className="mb-1 block text-sm font-medium text-text-primary">Your Message *</label>
+                      <label className="mb-1 block text-sm font-medium text-text-primary">{c.message} *</label>
                       <textarea name="message" required rows={6} className="w-full rounded-xl border border-gray-200 px-4 py-3 focus:border-primary-500 focus:outline-none" />
                     </div>
                     {error && <p className="text-sm text-error">{error}</p>}
                     <FButton variant="cta" size="lg" type="submit" disabled={loading}>
-                      {loading ? "..." : "Send Message"}
+                      {loading ? c.sending : c.submit}
                     </FButton>
                   </form>
                 )}
@@ -115,24 +152,24 @@ export default function ContactPage() {
 
             <div className="space-y-6">
               <FCard>
-                <h3 className="mb-3 font-bold text-text-primary">Saudi Arabia Office</h3>
+                <h3 className="mb-3 font-bold text-text-primary">{c.officeTitle}</h3>
                 <p className="flex items-start gap-2 text-text-secondary">
-                  <span>📍</span> Riyadh, Saudi Arabia
+                  <span>📍</span> {c.officeCity}
                 </p>
                 <p className="mt-2 flex items-start gap-2 text-text-secondary">
                   <span>📞</span>
-                  <a href="tel:+966568051090" className="text-primary-500 hover:text-primary-400">+966 56 805 1090</a>
+                  <a href="tel:+966568051090" className="text-primary-500 hover:text-primary-400" dir="ltr">+966 56 805 1090</a>
                 </p>
                 <p className="mt-2 flex items-start gap-2 text-text-secondary">
                   <span>✉️</span>
-                  <a href="mailto:info@falcon-it.sa" className="text-primary-500 hover:text-primary-400">info@falcon-it.sa</a>
+                  <a href="mailto:info@falcon-it.sa" className="text-primary-500 hover:text-primary-400" dir="ltr">info@falcon-it.sa</a>
                 </p>
               </FCard>
               <FCard>
-                <h3 className="mb-2 font-bold text-text-primary">Prefer WhatsApp?</h3>
-                <p className="mb-4 text-text-secondary">Chat with our team instantly for quick questions.</p>
+                <h3 className="mb-2 font-bold text-text-primary">{c.waTitle}</h3>
+                <p className="mb-4 text-text-secondary">{c.waBody}</p>
                 <FButton variant="cta" href="https://wa.me/966568051090?text=Hi!%20I%27m%20interested%20in%20Falcon%20ERP.%20Can%20you%20help%3F">
-                  Chat on WhatsApp
+                  {c.waCta}
                 </FButton>
               </FCard>
             </div>
