@@ -5,11 +5,11 @@ import SectionHeader from "@/components/shared/SectionHeader";
 import FButton from "@/components/ui/FButton";
 import { cn } from "@/lib/utils";
 
-const FAQ_KEYS = [1, 2, 3, 4, 5, 6, 7] as const;
+const FAQ_KEYS = [2, 3, 4, 5, 6, 7] as const;
 
 export default function Faq() {
   const t = useTranslations("faq");
-  const [openId, setOpenId] = useState<number | null>(1);
+  const [openId, setOpenId] = useState<number | null>(2);
   return (
     <section className="bg-white py-20 lg:py-28">
       <Container>
