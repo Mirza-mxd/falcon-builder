@@ -145,7 +145,7 @@ export default function FalconErpDesktopPage() {
                 {c.h1}
               </h1>
               <p className="mt-6 text-lg text-text-on-dark/70">{c.heroLead}</p>
-              <p className="mt-6 text-lg font-semibold text-primary-400">{c.price}</p>
+              
               <div className="mt-8 flex flex-wrap gap-4">
                 <FButton variant="cta" size="lg" href="/contact?subject=quote">{c.ctaAssess}</FButton>
                 <FButton variant="dark-outline" size="lg" href="/demo">{c.ctaDemo}</FButton>
