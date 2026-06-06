@@ -82,13 +82,19 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content:
           "ZATCA-compliant, Arabic-native ERP. Falcon Desktop, Falcon Cloud and certified Odoo services for businesses across MENA.",
       },
-      { property: "og:title", content: "Falcon Smart Solutions" },
+      { property: "og:title", content: "Falcon Smart Solutions — ERP for Saudi Arabia & MENA" },
       {
         property: "og:description",
         content: "Enterprise ERP. Half the price. Built for the Middle East.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Falcon Smart Solutions — ERP for Saudi Arabia & MENA" },
+      { name: "description", content: "Falcon Builder is a website application that showcases ERP solutions and services." },
+      { property: "og:description", content: "Falcon Builder is a website application that showcases ERP solutions and services." },
+      { name: "twitter:description", content: "Falcon Builder is a website application that showcases ERP solutions and services." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/97a1664c-6060-4e4a-8ed6-b03d5f5ee0d3/id-preview-261fb91b--54fdb2c4-1c16-400c-b650-09a3e16b8dc7.lovable.app-1779307003152.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/97a1664c-6060-4e4a-8ed6-b03d5f5ee0d3/id-preview-261fb91b--54fdb2c4-1c16-400c-b650-09a3e16b8dc7.lovable.app-1779307003152.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
