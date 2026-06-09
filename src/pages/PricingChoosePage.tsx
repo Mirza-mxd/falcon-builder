@@ -150,15 +150,65 @@ export default function PricingChoosePage() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
+  const formRef = useRef<HTMLFormElement>(null);
   const tsRef = useRef<number>(0);
   useEffect(() => { tsRef.current = Date.now(); }, []);
 
+  function validate(fd: FormData): Record<string, string> {
+    const errs: Record<string, string> = {};
+    const req: [string, string][] = [
+      ["fullName", "Please enter your full name."],
+      ["jobTitle", "Please enter your job title or role."],
+      ["email", "Please enter your work email."],
+      ["phone", "Please enter your phone number."],
+      ["company", "Please enter your company name."],
+      ["industry", "Please select your industry."],
+      ["size", "Please select your company size."],
+      ["currentSystem", "Please select your current system."],
+    ];
+    for (const [name, msg] of req) {
+      if (!String(fd.get(name) ?? "").trim()) errs[name] = msg;
+    }
+    const email = String(fd.get("email") ?? "").trim();
+    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      errs.email = "Please enter a valid email address.";
+    }
+    const phone = String(fd.get("phone") ?? "").trim();
+    if (phone && !/^[0-9 +()-]{6,}$/.test(phone)) {
+      errs.phone = "Please enter a valid phone number.";
+    }
+    return errs;
+  }
+
+  function clearFieldError(name: string) {
+    setFieldErrors((prev) => {
+      if (!prev[name]) return prev;
+      const next = { ...prev };
+      delete next[name];
+      return next;
+    });
+  }
+
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (!e.currentTarget.checkValidity()) { e.currentTarget.reportValidity(); return; }
+    const form = e.currentTarget;
+    const fd = new FormData(form);
+    const errs = validate(fd);
+    if (Object.keys(errs).length > 0) {
+      setFieldErrors(errs);
+      setError(null);
+      const firstName = Object.keys(errs)[0];
+      const el = form.querySelector<HTMLElement>(`[name="${firstName}"]`);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "center" });
+        setTimeout(() => el.focus({ preventScroll: true }), 350);
+      }
+      return;
+    }
+    setFieldErrors({});
     setLoading(true);
     setError(null);
-    const fd = new FormData(e.currentTarget);
     const phoneCountry = String(fd.get("phoneCountry") ?? "");
     const phoneNumber = String(fd.get("phone") ?? "");
     try {
@@ -189,6 +239,7 @@ export default function PricingChoosePage() {
       setLoading(false);
     }
   }
+
 
   return (
     <div className="choose-root">
