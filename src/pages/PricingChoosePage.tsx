@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Link, useSearch } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { PLAN_DETAILS, isPlanKey, type PlanKey } from "@/lib/pricing-plans";
-import { submitLead } from "@/lib/leads.functions";
+import { submitPricingLead } from "@/lib/form-leads.functions";
 
 const CSS = `
 .choose-root {
