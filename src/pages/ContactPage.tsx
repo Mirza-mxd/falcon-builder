@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useIsRTL, useLocale, useTranslations } from "@/lib/i18n";
 import { useServerFn } from "@tanstack/react-start";
 import { useSearch } from "@tanstack/react-router";
-import { submitLead } from "@/lib/leads.functions";
+import { submitContactLead } from "@/lib/form-leads.functions";
 import Container from "@/components/ui/Container";
 import FCard from "@/components/ui/FCard";
 import FButton from "@/components/ui/FButton";
