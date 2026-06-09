@@ -52,7 +52,7 @@ export default function ContactPage() {
   const isRTL = useIsRTL();
   const c = isRTL ? C.ar : C.en;
   const t = useTranslations("contact");
-  const submit = useServerFn(submitLead);
+  const submit = useServerFn(submitContactLead);
   const search = useSearch({ strict: false }) as { subject?: string };
   const initialSubject: SubjectKey | "" = search.subject === "quote" ? "quote" : "";
   const [subject, setSubject] = useState<SubjectKey | "">(initialSubject);
