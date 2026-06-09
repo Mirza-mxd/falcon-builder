@@ -146,7 +146,7 @@ export default function PricingChoosePage() {
   const planKey: PlanKey | null = isPlanKey(search.plan) ? search.plan : null;
   const plan = planKey ? PLAN_DETAILS[planKey] : null;
 
-  const submit = useServerFn(submitLead);
+  const submit = useServerFn(submitPricingLead);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
