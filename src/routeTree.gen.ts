@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as WebinarsRouteImport } from './routes/webinars'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as PartnersRouteImport } from './routes/partners'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as HelpRouteImport } from './routes/help'
@@ -28,6 +29,7 @@ import { Route as ArIndexRouteImport } from './routes/ar.index'
 import { Route as ProductsOdooServicesRouteImport } from './routes/products.odoo-services'
 import { Route as ProductsFalconErpDesktopRouteImport } from './routes/products.falcon-erp-desktop'
 import { Route as ProductsFalconCloudRouteImport } from './routes/products.falcon-cloud'
+import { Route as PricingChooseRouteImport } from './routes/pricing.choose'
 import { Route as ArWebinarsRouteImport } from './routes/ar.webinars'
 import { Route as ArTermsRouteImport } from './routes/ar.terms'
 import { Route as ArPrivacyRouteImport } from './routes/ar.privacy'
@@ -65,6 +67,11 @@ const TermsRoute = TermsRouteImport.update({
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PricingRoute = PricingRouteImport.update({
+  id: '/pricing',
+  path: '/pricing',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PartnersRoute = PartnersRouteImport.update({
@@ -147,6 +154,11 @@ const ProductsFalconCloudRoute = ProductsFalconCloudRouteImport.update({
   id: '/products/falcon-cloud',
   path: '/products/falcon-cloud',
   getParentRoute: () => rootRouteImport,
+} as any)
+const PricingChooseRoute = PricingChooseRouteImport.update({
+  id: '/choose',
+  path: '/choose',
+  getParentRoute: () => PricingRoute,
 } as any)
 const ArWebinarsRoute = ArWebinarsRouteImport.update({
   id: '/ar/webinars',
@@ -276,6 +288,7 @@ export interface FileRoutesByFullPath {
   '/help': typeof HelpRoute
   '/login': typeof LoginRoute
   '/partners': typeof PartnersRoute
+  '/pricing': typeof PricingRouteWithChildren
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
   '/webinars': typeof WebinarsRoute
@@ -291,6 +304,7 @@ export interface FileRoutesByFullPath {
   '/ar/privacy': typeof ArPrivacyRoute
   '/ar/terms': typeof ArTermsRoute
   '/ar/webinars': typeof ArWebinarsRoute
+  '/pricing/choose': typeof PricingChooseRoute
   '/products/falcon-cloud': typeof ProductsFalconCloudRoute
   '/products/falcon-erp-desktop': typeof ProductsFalconErpDesktopRoute
   '/products/odoo-services': typeof ProductsOdooServicesRoute
@@ -320,6 +334,7 @@ export interface FileRoutesByTo {
   '/help': typeof HelpRoute
   '/login': typeof LoginRoute
   '/partners': typeof PartnersRoute
+  '/pricing': typeof PricingRouteWithChildren
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
   '/webinars': typeof WebinarsRoute
@@ -335,6 +350,7 @@ export interface FileRoutesByTo {
   '/ar/privacy': typeof ArPrivacyRoute
   '/ar/terms': typeof ArTermsRoute
   '/ar/webinars': typeof ArWebinarsRoute
+  '/pricing/choose': typeof PricingChooseRoute
   '/products/falcon-cloud': typeof ProductsFalconCloudRoute
   '/products/falcon-erp-desktop': typeof ProductsFalconErpDesktopRoute
   '/products/odoo-services': typeof ProductsOdooServicesRoute
@@ -365,6 +381,7 @@ export interface FileRoutesById {
   '/help': typeof HelpRoute
   '/login': typeof LoginRoute
   '/partners': typeof PartnersRoute
+  '/pricing': typeof PricingRouteWithChildren
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
   '/webinars': typeof WebinarsRoute
@@ -380,6 +397,7 @@ export interface FileRoutesById {
   '/ar/privacy': typeof ArPrivacyRoute
   '/ar/terms': typeof ArTermsRoute
   '/ar/webinars': typeof ArWebinarsRoute
+  '/pricing/choose': typeof PricingChooseRoute
   '/products/falcon-cloud': typeof ProductsFalconCloudRoute
   '/products/falcon-erp-desktop': typeof ProductsFalconErpDesktopRoute
   '/products/odoo-services': typeof ProductsOdooServicesRoute
@@ -411,6 +429,7 @@ export interface FileRouteTypes {
     | '/help'
     | '/login'
     | '/partners'
+    | '/pricing'
     | '/privacy'
     | '/terms'
     | '/webinars'
@@ -426,6 +445,7 @@ export interface FileRouteTypes {
     | '/ar/privacy'
     | '/ar/terms'
     | '/ar/webinars'
+    | '/pricing/choose'
     | '/products/falcon-cloud'
     | '/products/falcon-erp-desktop'
     | '/products/odoo-services'
@@ -455,6 +475,7 @@ export interface FileRouteTypes {
     | '/help'
     | '/login'
     | '/partners'
+    | '/pricing'
     | '/privacy'
     | '/terms'
     | '/webinars'
@@ -470,6 +491,7 @@ export interface FileRouteTypes {
     | '/ar/privacy'
     | '/ar/terms'
     | '/ar/webinars'
+    | '/pricing/choose'
     | '/products/falcon-cloud'
     | '/products/falcon-erp-desktop'
     | '/products/odoo-services'
@@ -499,6 +521,7 @@ export interface FileRouteTypes {
     | '/help'
     | '/login'
     | '/partners'
+    | '/pricing'
     | '/privacy'
     | '/terms'
     | '/webinars'
@@ -514,6 +537,7 @@ export interface FileRouteTypes {
     | '/ar/privacy'
     | '/ar/terms'
     | '/ar/webinars'
+    | '/pricing/choose'
     | '/products/falcon-cloud'
     | '/products/falcon-erp-desktop'
     | '/products/odoo-services'
@@ -544,6 +568,7 @@ export interface RootRouteChildren {
   HelpRoute: typeof HelpRoute
   LoginRoute: typeof LoginRoute
   PartnersRoute: typeof PartnersRoute
+  PricingRoute: typeof PricingRouteWithChildren
   PrivacyRoute: typeof PrivacyRoute
   TermsRoute: typeof TermsRoute
   WebinarsRoute: typeof WebinarsRoute
@@ -599,6 +624,13 @@ declare module '@tanstack/react-router' {
       path: '/privacy'
       fullPath: '/privacy'
       preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pricing': {
+      id: '/pricing'
+      path: '/pricing'
+      fullPath: '/pricing'
+      preLoaderRoute: typeof PricingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/partners': {
@@ -712,6 +744,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/products/falcon-cloud'
       preLoaderRoute: typeof ProductsFalconCloudRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/pricing/choose': {
+      id: '/pricing/choose'
+      path: '/choose'
+      fullPath: '/pricing/choose'
+      preLoaderRoute: typeof PricingChooseRouteImport
+      parentRoute: typeof PricingRoute
     }
     '/ar/webinars': {
       id: '/ar/webinars'
@@ -877,6 +916,17 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface PricingRouteChildren {
+  PricingChooseRoute: typeof PricingChooseRoute
+}
+
+const PricingRouteChildren: PricingRouteChildren = {
+  PricingChooseRoute: PricingChooseRoute,
+}
+
+const PricingRouteWithChildren =
+  PricingRoute._addFileChildren(PricingRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
@@ -888,6 +938,7 @@ const rootRouteChildren: RootRouteChildren = {
   HelpRoute: HelpRoute,
   LoginRoute: LoginRoute,
   PartnersRoute: PartnersRoute,
+  PricingRoute: PricingRouteWithChildren,
   PrivacyRoute: PrivacyRoute,
   TermsRoute: TermsRoute,
   WebinarsRoute: WebinarsRoute,
@@ -924,13 +975,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
