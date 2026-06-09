@@ -71,14 +71,12 @@ export default function ContactPage() {
     try {
       const res = await submit({
         data: {
-          type: "contact",
           name: String(fd.get("name") ?? ""),
           email: String(fd.get("email") ?? ""),
           phone: String(fd.get("phone") ?? ""),
-          company: "",
+          subject: subjectValue,
           message: String(fd.get("message") ?? ""),
           locale,
-          payload: { subject: subjectValue },
           hp: String(fd.get("company_website") ?? ""),
           ts: tsRef.current,
         },
