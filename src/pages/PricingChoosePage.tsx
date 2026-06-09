@@ -89,6 +89,11 @@ const CSS = `
 .choose-root .btn-home { display: inline-block; background: white; color: var(--navy-900); border: 1.5px solid var(--navy-900); padding: 12px 28px; border-radius: var(--radius-button); font-weight: 600; font-size: 14px; transition: all 0.15s; }
 .choose-root .btn-home:hover { background: var(--navy-900); color: white; }
 .choose-root .error { color: #EF4444; font-size: 14px; margin-top: 8px; }
+.choose-root .field-error { display: block; margin-top: 6px; color: #DC2626; font-size: 13px; font-weight: 500; }
+.choose-root .form-field input.is-error, .choose-root .form-field select.is-error, .choose-root .form-field textarea.is-error { border-color: #EF4444; box-shadow: 0 0 0 3px rgba(239,68,68,0.12); }
+.choose-root .form-field input.is-error:focus, .choose-root .form-field select.is-error:focus, .choose-root .form-field textarea.is-error:focus { border-color: #EF4444; box-shadow: 0 0 0 3px rgba(239,68,68,0.2); }
+.choose-root .phone-wrap.is-error { border-color: #EF4444; box-shadow: 0 0 0 3px rgba(239,68,68,0.12); }
+.choose-root .phone-wrap.is-error:focus-within { border-color: #EF4444; box-shadow: 0 0 0 3px rgba(239,68,68,0.2); }
 
 @media (max-width: 640px) {
   .choose-root .form-row { grid-template-columns: 1fr; }
