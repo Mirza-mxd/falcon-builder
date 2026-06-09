@@ -14,6 +14,39 @@ export type Database = {
   }
   public: {
     Tables: {
+      contact_leads: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          locale: string | null
+          message: string | null
+          name: string | null
+          phone: string | null
+          subject: string | null
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          locale?: string | null
+          message?: string | null
+          name?: string | null
+          phone?: string | null
+          subject?: string | null
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          locale?: string | null
+          message?: string | null
+          name?: string | null
+          phone?: string | null
+          subject?: string | null
+        }
+        Relationships: []
+      }
       leads: {
         Row: {
           company: string | null
@@ -50,6 +83,60 @@ export type Database = {
           payload?: Json | null
           phone?: string | null
           type?: string
+        }
+        Relationships: []
+      }
+      pricing_leads: {
+        Row: {
+          company: string | null
+          company_size: string | null
+          created_at: string
+          current_system: string | null
+          email: string
+          full_name: string | null
+          id: string
+          industry: string | null
+          job_title: string | null
+          locale: string | null
+          needs: string | null
+          phone: string | null
+          plan_key: string | null
+          plan_name: string | null
+          timeline: string | null
+        }
+        Insert: {
+          company?: string | null
+          company_size?: string | null
+          created_at?: string
+          current_system?: string | null
+          email: string
+          full_name?: string | null
+          id?: string
+          industry?: string | null
+          job_title?: string | null
+          locale?: string | null
+          needs?: string | null
+          phone?: string | null
+          plan_key?: string | null
+          plan_name?: string | null
+          timeline?: string | null
+        }
+        Update: {
+          company?: string | null
+          company_size?: string | null
+          created_at?: string
+          current_system?: string | null
+          email?: string
+          full_name?: string | null
+          id?: string
+          industry?: string | null
+          job_title?: string | null
+          locale?: string | null
+          needs?: string | null
+          phone?: string | null
+          plan_key?: string | null
+          plan_name?: string | null
+          timeline?: string | null
         }
         Relationships: []
       }
