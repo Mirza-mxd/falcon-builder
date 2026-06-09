@@ -189,8 +189,8 @@ export default function PricingPage() {
       <section className="hero">
         <div className="container">
           <span className="eyebrow">Pricing · 2026 · Kingdom of Saudi Arabia</span>
-          <h1>Clear pricing for your <span className="accent">ERP journey</span></h1>
-          <p className="lead">From Odoo implementations to Falcon ERP products, plus shared services and bundle discounts. Pick a starting point, or talk to us for a tailored quote.</p>
+          <h1>Transparent pricing for <span className="accent">every stage of growth</span></h1>
+          <p className="lead">Recommended planning ranges for ERP implementations and Falcon ERP products, built for the Saudi market. All figures in SAR.</p>
         </div>
       </section>
 
