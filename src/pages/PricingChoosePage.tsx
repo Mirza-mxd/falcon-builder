@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useSearch } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
-import { PLAN_DETAILS, isPlanKey, type PlanKey } from "@/lib/pricing-plans";
+import { PLAN_DETAILS, PLAN_DETAILS_AR, isPlanKey, type PlanKey } from "@/lib/pricing-plans";
 import { submitPricingLead } from "@/lib/form-leads.functions";
+import { useLocale, useLocalePath } from "@/lib/i18n";
 
 const CSS = `
 .choose-root {
@@ -37,7 +38,7 @@ const CSS = `
 .choose-root .back-link:hover { color: var(--cyan-500); }
 
 .choose-root .plan-card { background: white; border: 2px solid var(--cyan-500); border-radius: var(--radius-card); padding: 28px 32px; margin-bottom: 32px; box-shadow: 0 10px 30px rgba(41, 171, 212, 0.12); position: relative; }
-.choose-root .plan-card::before { content: "✓"; position: absolute; top: 24px; right: 32px; width: 32px; height: 32px; background: var(--cta); color: white; border-radius: 50%; display: grid; place-items: center; font-size: 16px; font-weight: 700; }
+.choose-root .plan-card::before { content: "✓"; position: absolute; top: 24px; inset-inline-end: 32px; width: 32px; height: 32px; background: var(--cta); color: white; border-radius: 50%; display: grid; place-items: center; font-size: 16px; font-weight: 700; }
 .choose-root .plan-card .plan-label { font-size: 12px; font-weight: 600; letter-spacing: 0.1em; color: var(--cyan-500); text-transform: uppercase; margin-bottom: 8px; }
 .choose-root .plan-card h2 { color: var(--navy-900); margin-bottom: 6px; font-size: 24px; }
 .choose-root .plan-card .plan-tier { color: var(--text-secondary); font-size: 15px; margin-bottom: 16px; }
@@ -52,8 +53,8 @@ const CSS = `
 .choose-root .form-row.single { grid-template-columns: 1fr; }
 .choose-root .form-field { display: flex; flex-direction: column; }
 .choose-root .form-field label { font-size: 14px; font-weight: 500; color: var(--text-primary); margin-bottom: 6px; }
-.choose-root .form-field label .req { color: var(--cta); margin-left: 2px; }
-.choose-root .form-field label .opt { color: var(--text-muted); font-weight: 400; font-size: 13px; margin-left: 6px; }
+.choose-root .form-field label .req { color: var(--cta); margin-inline-start: 2px; }
+.choose-root .form-field label .opt { color: var(--text-muted); font-weight: 400; font-size: 13px; margin-inline-start: 6px; }
 .choose-root .form-field input, .choose-root .form-field select, .choose-root .form-field textarea {
   width: 100%; padding: 12px 14px; border: 1.5px solid var(--border); border-radius: var(--radius-input);
   font-family: inherit; font-size: 15px; color: var(--text-primary); background: white;
@@ -67,7 +68,7 @@ const CSS = `
 
 .choose-root .phone-wrap { display: flex; align-items: stretch; border: 1.5px solid var(--border); border-radius: var(--radius-input); overflow: hidden; background: white; transition: border-color 0.15s, box-shadow 0.15s; }
 .choose-root .phone-wrap:focus-within { border-color: var(--border-focus); box-shadow: 0 0 0 3px var(--cyan-100); }
-.choose-root .phone-country { flex: 0 0 25%; width: 25%; min-width: 0; appearance: none; border: none; background: var(--surface-alt); color: var(--text-primary); font-family: inherit; font-size: 15px; font-weight: 500; padding: 12px 28px 12px 12px; border-right: 1px solid var(--border); cursor: pointer; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path fill='%2364748B' d='M6 8L0 0h12z'/></svg>"); background-repeat: no-repeat; background-position: right 10px center; text-overflow: ellipsis; }
+.choose-root .phone-country { flex: 0 0 25%; width: 25%; min-width: 0; appearance: none; border: none; background: var(--surface-alt); color: var(--text-primary); font-family: inherit; font-size: 15px; font-weight: 500; padding: 12px 28px 12px 12px; border-inline-end: 1px solid var(--border); cursor: pointer; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path fill='%2364748B' d='M6 8L0 0h12z'/></svg>"); background-repeat: no-repeat; background-position: right 10px center; text-overflow: ellipsis; }
 .choose-root .phone-country:focus { outline: none; }
 .choose-root .phone-wrap input { flex: 1 1 75%; width: 75%; min-width: 0; border: none; padding: 12px 14px; font-family: inherit; font-size: 15px; color: var(--text-primary); outline: none; background: transparent; }
 
@@ -81,7 +82,7 @@ const CSS = `
 .choose-root .thank-icon { width: 72px; height: 72px; margin: 0 auto 24px; border-radius: 50%; background: var(--cta-light); color: var(--cta-hover); display: grid; place-items: center; font-size: 32px; font-weight: 700; }
 .choose-root .thankyou-card h2 { font-size: 28px; color: var(--navy-900); margin-bottom: 12px; }
 .choose-root .thankyou-card > p { font-size: 16px; max-width: 480px; margin: 0 auto 32px; color: var(--text-secondary); }
-.choose-root .next-steps { text-align: left; max-width: 440px; margin: 0 auto 36px; background: var(--surface); border-radius: var(--radius-card); padding: 24px 28px; }
+.choose-root .next-steps { text-align: start; max-width: 440px; margin: 0 auto 36px; background: var(--surface); border-radius: var(--radius-card); padding: 24px 28px; }
 .choose-root .next-steps h4 { font-size: 13px; font-weight: 600; letter-spacing: 0.08em; color: var(--cyan-500); text-transform: uppercase; margin-bottom: 16px; }
 .choose-root .next-steps ol { counter-reset: step; }
 .choose-root .next-steps li { counter-increment: step; display: flex; gap: 14px; padding: 8px 0; font-size: 14px; color: var(--text-primary); line-height: 1.5; }
@@ -110,7 +111,7 @@ const COUNTRIES = [
   { code: "+968", flag: "🇴🇲" },
 ];
 
-const INDUSTRY_OPTS = [
+const INDUSTRY_OPTS_EN = [
   ["manufacturing", "Manufacturing"],
   ["retail", "Retail / Multi-branch"],
   ["contracting", "Contracting / Construction"],
@@ -121,6 +122,17 @@ const INDUSTRY_OPTS = [
   ["services", "Services"],
   ["other", "Other"],
 ] as const;
+const INDUSTRY_OPTS_AR = [
+  ["manufacturing", "التصنيع"],
+  ["retail", "التجزئة / متعدد الفروع"],
+  ["contracting", "المقاولات / الإنشاءات"],
+  ["distribution", "التوزيع"],
+  ["restaurants", "المطاعم والأغذية والمشروبات"],
+  ["logistics", "الخدمات اللوجستية"],
+  ["hospitality", "الضيافة"],
+  ["services", "الخدمات"],
+  ["other", "أخرى"],
+] as const;
 
 const SIZE_OPTS = [
   ["1-10", "1–10"],
@@ -130,7 +142,7 @@ const SIZE_OPTS = [
   ["200+", "200+"],
 ] as const;
 
-const SYSTEM_OPTS = [
+const SYSTEM_OPTS_EN = [
   ["excel", "Excel / spreadsheets"],
   ["qoyod", "Qoyod or similar accounting software"],
   ["another-erp", "Another ERP"],
@@ -138,18 +150,142 @@ const SYSTEM_OPTS = [
   ["nothing", "Nothing yet"],
   ["other", "Other"],
 ] as const;
+const SYSTEM_OPTS_AR = [
+  ["excel", "إكسل / جداول بيانات"],
+  ["qoyod", "قيود أو برنامج محاسبي مشابه"],
+  ["another-erp", "نظام ERP آخر"],
+  ["custom", "نظام داخلي مخصّص"],
+  ["nothing", "لا يوجد حتى الآن"],
+  ["other", "أخرى"],
+] as const;
 
-const TIMELINE_OPTS = [
+const TIMELINE_OPTS_EN = [
   ["immediate", "Within 1 month"],
   ["short", "1–3 months"],
   ["medium", "3–6 months"],
   ["researching", "Just researching"],
 ] as const;
+const TIMELINE_OPTS_AR = [
+  ["immediate", "خلال شهر"],
+  ["short", "1–3 أشهر"],
+  ["medium", "3–6 أشهر"],
+  ["researching", "في مرحلة البحث فقط"],
+] as const;
+
+const STRINGS = {
+  en: {
+    eyebrow: "Confirm your plan",
+    h1a: "One step from your ", h1b: "tailored quote",
+    intro: "Share a few details about your business and a Falcon representative will be in touch within 24 hours.",
+    back: "← Back to pricing",
+    selectedLabel: "Your selected plan",
+    noPlanLabel: "No plan selected",
+    noPlanTitle: "Pick a plan first",
+    noPlanDesc: "Head back to pricing and choose the plan you want a quote for.",
+    secAboutYou: "About you",
+    secAboutBiz: "About your business",
+    secAboutProject: "About your project",
+    fullName: "Full name", fullNamePh: "Your full name",
+    jobTitle: "Job title or role", jobTitlePh: "e.g. Finance Manager",
+    email: "Work email", emailPh: "you@company.com",
+    phone: "Phone", phonePh: "5X XXX XXXX",
+    company: "Company name", companyPh: "Your company's legal name",
+    industry: "Industry", industryPh: "Select your industry",
+    size: "Company size", sizePh: "Number of employees",
+    currentSystem: "Current system", currentSystemPh: "What are you using today?",
+    timeline: "When are you looking to start?", optional: "Optional", timelinePh: "Select a timeline",
+    needs: "What are you hoping the new system will solve?",
+    needsPh: "A few lines about the problems you're trying to fix, or what's driving the change...",
+    needsHelper: "The more we know now, the more productive our first call will be.",
+    submitNote: "By submitting, you agree to be contacted by Falcon about your inquiry. We respond within 24 hours.",
+    submit: "Submit and request quote",
+    submitting: "Submitting...",
+    fixErrors: "Please fix the highlighted fields before submitting.",
+    thankH2: "Thank you, we've got it.",
+    thankP: "A Falcon representative will be in touch within 24 hours to walk you through the next steps and prepare your tailored quote.",
+    nextStepsH: "What happens next",
+    nextSteps: [
+      "We review your request and the plan you selected.",
+      "We reach out to book a discovery call at a time that suits you.",
+      "You receive a tailored quote built around your business.",
+    ],
+    backHome: "Back to pricing",
+    req: [
+      ["fullName", "Please enter your full name."],
+      ["jobTitle", "Please enter your job title or role."],
+      ["email", "Please enter your work email."],
+      ["phone", "Please enter your phone number."],
+      ["company", "Please enter your company name."],
+      ["industry", "Please select your industry."],
+      ["size", "Please select your company size."],
+      ["currentSystem", "Please select your current system."],
+    ] as [string, string][],
+    invalidEmail: "Please enter a valid email address.",
+    invalidPhone: "Please enter a valid phone number.",
+  },
+  ar: {
+    eyebrow: "أكّد خطتك",
+    h1a: "خطوة واحدة للحصول على ", h1b: "عرض السعر المخصّص",
+    intro: "شارك بعض التفاصيل عن شركتك، وسيتواصل معك ممثل فالكون خلال 24 ساعة.",
+    back: "→ العودة إلى الأسعار",
+    selectedLabel: "الخطة المختارة",
+    noPlanLabel: "لم يتم اختيار خطة",
+    noPlanTitle: "اختر خطة أولًا",
+    noPlanDesc: "عُد إلى صفحة الأسعار واختر الخطة التي تريد عرض سعرٍ لها.",
+    secAboutYou: "نبذة عنك",
+    secAboutBiz: "نبذة عن شركتك",
+    secAboutProject: "نبذة عن مشروعك",
+    fullName: "الاسم الكامل", fullNamePh: "اسمك الكامل",
+    jobTitle: "المسمى الوظيفي", jobTitlePh: "مثال: المدير المالي",
+    email: "البريد الإلكتروني للعمل", emailPh: "you@company.com",
+    phone: "رقم الجوال", phonePh: "5X XXX XXXX",
+    company: "اسم الشركة", companyPh: "الاسم القانوني لشركتك",
+    industry: "القطاع", industryPh: "اختر قطاعك",
+    size: "حجم الشركة", sizePh: "عدد الموظفين",
+    currentSystem: "النظام الحالي", currentSystemPh: "ما الذي تستخدمه حاليًا؟",
+    timeline: "متى تخطّط للبدء؟", optional: "اختياري", timelinePh: "اختر الإطار الزمني",
+    needs: "ما المشاكل التي تأمل أن يحلّها النظام الجديد؟",
+    needsPh: "أسطر قليلة عن المشاكل التي تحاول حلّها أو ما الذي يدفع نحو التغيير...",
+    needsHelper: "كلما عرفنا أكثر الآن، كانت مكالمتنا الأولى أكثر إنتاجية.",
+    submitNote: "بإرسال النموذج، توافق على أن يتواصل معك فريق فالكون بشأن استفسارك. نرد خلال 24 ساعة.",
+    submit: "إرسال وطلب عرض السعر",
+    submitting: "جارٍ الإرسال...",
+    fixErrors: "يرجى تصحيح الحقول المُحدَّدة قبل الإرسال.",
+    thankH2: "شكرًا، استلمنا طلبك.",
+    thankP: "سيتواصل معك ممثل من فالكون خلال 24 ساعة لإرشادك إلى الخطوات التالية وإعداد عرض السعر المخصّص.",
+    nextStepsH: "ما الذي يحدث بعد ذلك",
+    nextSteps: [
+      "نراجع طلبك والخطة التي اخترتها.",
+      "نتواصل معك لحجز مكالمة استكشاف في وقت يناسبك.",
+      "تستلم عرض سعر مخصّصًا مصمّمًا لاحتياجات شركتك.",
+    ],
+    backHome: "العودة إلى الأسعار",
+    req: [
+      ["fullName", "يرجى إدخال اسمك الكامل."],
+      ["jobTitle", "يرجى إدخال مسمّاك الوظيفي."],
+      ["email", "يرجى إدخال بريدك الإلكتروني للعمل."],
+      ["phone", "يرجى إدخال رقم جوالك."],
+      ["company", "يرجى إدخال اسم شركتك."],
+      ["industry", "يرجى اختيار قطاعك."],
+      ["size", "يرجى اختيار حجم شركتك."],
+      ["currentSystem", "يرجى اختيار نظامك الحالي."],
+    ] as [string, string][],
+    invalidEmail: "يرجى إدخال بريد إلكتروني صالح.",
+    invalidPhone: "يرجى إدخال رقم جوال صالح.",
+  },
+} as const;
 
 export default function PricingChoosePage() {
+  const locale = useLocale();
+  const t = STRINGS[locale];
+  const localePath = useLocalePath();
   const search = useSearch({ strict: false }) as { plan?: string };
   const planKey: PlanKey | null = isPlanKey(search.plan) ? search.plan : null;
-  const plan = planKey ? PLAN_DETAILS[planKey] : null;
+  const planTable = locale === "ar" ? PLAN_DETAILS_AR : PLAN_DETAILS;
+  const plan = planKey ? planTable[planKey] : null;
+  const INDUSTRY_OPTS = locale === "ar" ? INDUSTRY_OPTS_AR : INDUSTRY_OPTS_EN;
+  const SYSTEM_OPTS = locale === "ar" ? SYSTEM_OPTS_AR : SYSTEM_OPTS_EN;
+  const TIMELINE_OPTS = locale === "ar" ? TIMELINE_OPTS_AR : TIMELINE_OPTS_EN;
 
   const submit = useServerFn(submitPricingLead);
   const [submitted, setSubmitted] = useState(false);
@@ -162,26 +298,16 @@ export default function PricingChoosePage() {
 
   function validate(fd: FormData): Record<string, string> {
     const errs: Record<string, string> = {};
-    const req: [string, string][] = [
-      ["fullName", "Please enter your full name."],
-      ["jobTitle", "Please enter your job title or role."],
-      ["email", "Please enter your work email."],
-      ["phone", "Please enter your phone number."],
-      ["company", "Please enter your company name."],
-      ["industry", "Please select your industry."],
-      ["size", "Please select your company size."],
-      ["currentSystem", "Please select your current system."],
-    ];
-    for (const [name, msg] of req) {
+    for (const [name, msg] of t.req) {
       if (!String(fd.get(name) ?? "").trim()) errs[name] = msg;
     }
     const email = String(fd.get("email") ?? "").trim();
     if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      errs.email = "Please enter a valid email address.";
+      errs.email = t.invalidEmail;
     }
     const phone = String(fd.get("phone") ?? "").trim();
     if (phone && !/^[0-9 +()-]{6,}$/.test(phone)) {
-      errs.phone = "Please enter a valid phone number.";
+      errs.phone = t.invalidPhone;
     }
     return errs;
   }
@@ -231,13 +357,13 @@ export default function PricingChoosePage() {
           current_system: String(fd.get("currentSystem") ?? ""),
           timeline: String(fd.get("timeline") ?? ""),
           needs: String(fd.get("needs") ?? ""),
-          locale: "en",
+          locale,
           hp: String(fd.get("company_website") ?? ""),
           ts: tsRef.current,
         },
       });
       if (res.ok) setSubmitted(true);
-      else setError(res.error ?? "Failed to submit. Please try again.");
+      else setError(res.error ?? (locale === "ar" ? "فشل الإرسال. يرجى المحاولة مرة أخرى." : "Failed to submit. Please try again."));
     } catch (err) {
       setError((err as Error).message);
     } finally {
@@ -245,6 +371,7 @@ export default function PricingChoosePage() {
     }
   }
 
+  const pricingPath = localePath("/pricing");
 
   return (
     <div className="choose-root">
@@ -258,17 +385,15 @@ export default function PricingChoosePage() {
           <div className="container-narrow">
             <div className="thankyou-card">
               <div className="thank-icon">✓</div>
-              <h2>Thank you, we've got it.</h2>
-              <p>A Falcon representative will be in touch within 24 hours to walk you through the next steps and prepare your tailored quote.</p>
+              <h2>{t.thankH2}</h2>
+              <p>{t.thankP}</p>
               <div className="next-steps">
-                <h4>What happens next</h4>
+                <h4>{t.nextStepsH}</h4>
                 <ol>
-                  <li>We review your request and the plan you selected.</li>
-                  <li>We reach out to book a discovery call at a time that suits you.</li>
-                  <li>You receive a tailored quote built around your business.</li>
+                  {t.nextSteps.map((step, i) => <li key={i}>{step}</li>)}
                 </ol>
               </div>
-              <Link to="/pricing" className="btn-home">Back to pricing</Link>
+              <Link to={pricingPath} className="btn-home">{t.backHome}</Link>
             </div>
           </div>
         </>
@@ -276,17 +401,17 @@ export default function PricingChoosePage() {
         <>
           <section className="form-intro">
             <div className="container-narrow">
-              <span className="eyebrow">Confirm your plan</span>
-              <h1>One step from your <span className="accent">tailored quote</span></h1>
-              <p>Share a few details about your business and a Falcon representative will be in touch within 24 hours.</p>
-              <div><Link to="/pricing" className="back-link">← Back to pricing</Link></div>
+              <span className="eyebrow">{t.eyebrow}</span>
+              <h1>{t.h1a}<span className="accent">{t.h1b}</span></h1>
+              <p>{t.intro}</p>
+              <div><Link to={pricingPath} className="back-link">{t.back}</Link></div>
             </div>
           </section>
 
           <div className="container-narrow">
             {plan ? (
               <div className="plan-card">
-                <div className="plan-label">Your selected plan</div>
+                <div className="plan-label">{t.selectedLabel}</div>
                 <h2>{plan.name}</h2>
                 <div className="plan-tier">{plan.desc}</div>
                 <div className="plan-price-row">
@@ -296,9 +421,9 @@ export default function PricingChoosePage() {
               </div>
             ) : (
               <div className="plan-card">
-                <div className="plan-label">No plan selected</div>
-                <h2>Pick a plan first</h2>
-                <div className="plan-tier">Head back to pricing and choose the plan you want a quote for.</div>
+                <div className="plan-label">{t.noPlanLabel}</div>
+                <h2>{t.noPlanTitle}</h2>
+                <div className="plan-tier">{t.noPlanDesc}</div>
               </div>
             )}
 
@@ -306,34 +431,34 @@ export default function PricingChoosePage() {
               <input type="text" name="company_website" tabIndex={-1} autoComplete="off" aria-hidden="true" style={{ position: "absolute", left: "-9999px", height: 0, width: 0, opacity: 0 }} />
 
               <div className="form-section">
-                <h3>About you</h3>
+                <h3>{t.secAboutYou}</h3>
                 <div className="form-row">
                   <div className="form-field">
-                    <label htmlFor="fullName">Full name<span className="req">*</span></label>
-                    <input type="text" id="fullName" name="fullName" placeholder="Your full name" required aria-invalid={!!fieldErrors.fullName} className={fieldErrors.fullName ? "is-error" : ""} onChange={() => clearFieldError("fullName")} />
+                    <label htmlFor="fullName">{t.fullName}<span className="req">*</span></label>
+                    <input type="text" id="fullName" name="fullName" placeholder={t.fullNamePh} required aria-invalid={!!fieldErrors.fullName} className={fieldErrors.fullName ? "is-error" : ""} onChange={() => clearFieldError("fullName")} />
                     {fieldErrors.fullName && <span className="field-error">{fieldErrors.fullName}</span>}
                   </div>
                   <div className="form-field">
-                    <label htmlFor="jobTitle">Job title or role<span className="req">*</span></label>
-                    <input type="text" id="jobTitle" name="jobTitle" placeholder="e.g. Finance Manager" required aria-invalid={!!fieldErrors.jobTitle} className={fieldErrors.jobTitle ? "is-error" : ""} onChange={() => clearFieldError("jobTitle")} />
+                    <label htmlFor="jobTitle">{t.jobTitle}<span className="req">*</span></label>
+                    <input type="text" id="jobTitle" name="jobTitle" placeholder={t.jobTitlePh} required aria-invalid={!!fieldErrors.jobTitle} className={fieldErrors.jobTitle ? "is-error" : ""} onChange={() => clearFieldError("jobTitle")} />
                     {fieldErrors.jobTitle && <span className="field-error">{fieldErrors.jobTitle}</span>}
                   </div>
                 </div>
                 <div className="form-row">
                   <div className="form-field">
-                    <label htmlFor="email">Work email<span className="req">*</span></label>
-                    <input type="email" id="email" name="email" placeholder="you@company.com" required aria-invalid={!!fieldErrors.email} className={fieldErrors.email ? "is-error" : ""} onChange={() => clearFieldError("email")} />
+                    <label htmlFor="email">{t.email}<span className="req">*</span></label>
+                    <input type="email" id="email" name="email" placeholder={t.emailPh} required aria-invalid={!!fieldErrors.email} className={fieldErrors.email ? "is-error" : ""} onChange={() => clearFieldError("email")} dir="ltr" />
                     {fieldErrors.email && <span className="field-error">{fieldErrors.email}</span>}
                   </div>
                   <div className="form-field">
-                    <label htmlFor="phone">Phone<span className="req">*</span></label>
-                    <div className={`phone-wrap${fieldErrors.phone ? " is-error" : ""}`}>
+                    <label htmlFor="phone">{t.phone}<span className="req">*</span></label>
+                    <div className={`phone-wrap${fieldErrors.phone ? " is-error" : ""}`} dir="ltr">
                       <select className="phone-country" id="phoneCountry" name="phoneCountry" defaultValue="+966" aria-label="Country code">
                         {COUNTRIES.map((c) => (
                           <option key={c.code} value={c.code}>{c.flag} {c.code}</option>
                         ))}
                       </select>
-                      <input type="tel" id="phone" name="phone" placeholder="5X XXX XXXX" required aria-invalid={!!fieldErrors.phone} onChange={() => clearFieldError("phone")} />
+                      <input type="tel" id="phone" name="phone" placeholder={t.phonePh} required aria-invalid={!!fieldErrors.phone} onChange={() => clearFieldError("phone")} />
                     </div>
                     {fieldErrors.phone && <span className="field-error">{fieldErrors.phone}</span>}
                   </div>
@@ -341,27 +466,27 @@ export default function PricingChoosePage() {
               </div>
 
               <div className="form-section">
-                <h3>About your business</h3>
+                <h3>{t.secAboutBiz}</h3>
                 <div className="form-row single">
                   <div className="form-field">
-                    <label htmlFor="company">Company name<span className="req">*</span></label>
-                    <input type="text" id="company" name="company" placeholder="Your company's legal name" required aria-invalid={!!fieldErrors.company} className={fieldErrors.company ? "is-error" : ""} onChange={() => clearFieldError("company")} />
+                    <label htmlFor="company">{t.company}<span className="req">*</span></label>
+                    <input type="text" id="company" name="company" placeholder={t.companyPh} required aria-invalid={!!fieldErrors.company} className={fieldErrors.company ? "is-error" : ""} onChange={() => clearFieldError("company")} />
                     {fieldErrors.company && <span className="field-error">{fieldErrors.company}</span>}
                   </div>
                 </div>
                 <div className="form-row">
                   <div className="form-field">
-                    <label htmlFor="industry">Industry<span className="req">*</span></label>
+                    <label htmlFor="industry">{t.industry}<span className="req">*</span></label>
                     <select id="industry" name="industry" required defaultValue="" aria-invalid={!!fieldErrors.industry} className={fieldErrors.industry ? "is-error" : ""} onChange={() => clearFieldError("industry")}>
-                      <option value="" disabled>Select your industry</option>
+                      <option value="" disabled>{t.industryPh}</option>
                       {INDUSTRY_OPTS.map(([v, l]) => <option key={v} value={v}>{l}</option>)}
                     </select>
                     {fieldErrors.industry && <span className="field-error">{fieldErrors.industry}</span>}
                   </div>
                   <div className="form-field">
-                    <label htmlFor="size">Company size<span className="req">*</span></label>
+                    <label htmlFor="size">{t.size}<span className="req">*</span></label>
                     <select id="size" name="size" required defaultValue="" aria-invalid={!!fieldErrors.size} className={fieldErrors.size ? "is-error" : ""} onChange={() => clearFieldError("size")}>
-                      <option value="" disabled>Number of employees</option>
+                      <option value="" disabled>{t.sizePh}</option>
                       {SIZE_OPTS.map(([v, l]) => <option key={v} value={v}>{l}</option>)}
                     </select>
                     {fieldErrors.size && <span className="field-error">{fieldErrors.size}</span>}
@@ -369,9 +494,9 @@ export default function PricingChoosePage() {
                 </div>
                 <div className="form-row single">
                   <div className="form-field">
-                    <label htmlFor="currentSystem">Current system<span className="req">*</span></label>
+                    <label htmlFor="currentSystem">{t.currentSystem}<span className="req">*</span></label>
                     <select id="currentSystem" name="currentSystem" required defaultValue="" aria-invalid={!!fieldErrors.currentSystem} className={fieldErrors.currentSystem ? "is-error" : ""} onChange={() => clearFieldError("currentSystem")}>
-                      <option value="" disabled>What are you using today?</option>
+                      <option value="" disabled>{t.currentSystemPh}</option>
                       {SYSTEM_OPTS.map(([v, l]) => <option key={v} value={v}>{l}</option>)}
                     </select>
                     {fieldErrors.currentSystem && <span className="field-error">{fieldErrors.currentSystem}</span>}
@@ -380,34 +505,34 @@ export default function PricingChoosePage() {
               </div>
 
               <div className="form-section">
-                <h3>About your project</h3>
+                <h3>{t.secAboutProject}</h3>
                 <div className="form-row single">
                   <div className="form-field">
-                    <label htmlFor="timeline">When are you looking to start? <span className="opt">Optional</span></label>
+                    <label htmlFor="timeline">{t.timeline} <span className="opt">{t.optional}</span></label>
                     <select id="timeline" name="timeline" defaultValue="">
-                      <option value="" disabled>Select a timeline</option>
+                      <option value="" disabled>{t.timelinePh}</option>
                       {TIMELINE_OPTS.map(([v, l]) => <option key={v} value={v}>{l}</option>)}
                     </select>
                   </div>
                 </div>
                 <div className="form-row single">
                   <div className="form-field">
-                    <label htmlFor="needs">What are you hoping the new system will solve? <span className="opt">Optional</span></label>
-                    <textarea id="needs" name="needs" rows={3} placeholder="A few lines about the problems you're trying to fix, or what's driving the change..." />
-                    <span className="helper">The more we know now, the more productive our first call will be.</span>
+                    <label htmlFor="needs">{t.needs} <span className="opt">{t.optional}</span></label>
+                    <textarea id="needs" name="needs" rows={3} placeholder={t.needsPh} />
+                    <span className="helper">{t.needsHelper}</span>
                   </div>
                 </div>
               </div>
 
               {error && <p className="error">{error}</p>}
               {Object.keys(fieldErrors).length > 0 && (
-                <p className="error">Please fix the highlighted fields before submitting.</p>
+                <p className="error">{t.fixErrors}</p>
               )}
 
               <div className="submit-row">
-                <p className="submit-note">By submitting, you agree to be contacted by Falcon about your inquiry. We respond within 24 hours.</p>
+                <p className="submit-note">{t.submitNote}</p>
                 <button type="submit" className="btn-submit" disabled={loading}>
-                  {loading ? "Submitting..." : "Submit and request quote"}
+                  {loading ? t.submitting : t.submit}
                 </button>
               </div>
             </form>
