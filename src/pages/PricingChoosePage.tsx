@@ -297,7 +297,7 @@ export default function PricingChoosePage() {
               </div>
             )}
 
-            <form className="form-card" onSubmit={onSubmit} noValidate>
+            <form ref={formRef} className="form-card" onSubmit={onSubmit} action="#" method="post" noValidate>
               <input type="text" name="company_website" tabIndex={-1} autoComplete="off" aria-hidden="true" style={{ position: "absolute", left: "-9999px", height: 0, width: 0, opacity: 0 }} />
 
               <div className="form-section">
@@ -305,28 +305,32 @@ export default function PricingChoosePage() {
                 <div className="form-row">
                   <div className="form-field">
                     <label htmlFor="fullName">Full name<span className="req">*</span></label>
-                    <input type="text" id="fullName" name="fullName" placeholder="Your full name" required />
+                    <input type="text" id="fullName" name="fullName" placeholder="Your full name" required aria-invalid={!!fieldErrors.fullName} className={fieldErrors.fullName ? "is-error" : ""} onChange={() => clearFieldError("fullName")} />
+                    {fieldErrors.fullName && <span className="field-error">{fieldErrors.fullName}</span>}
                   </div>
                   <div className="form-field">
                     <label htmlFor="jobTitle">Job title or role<span className="req">*</span></label>
-                    <input type="text" id="jobTitle" name="jobTitle" placeholder="e.g. Finance Manager" required />
+                    <input type="text" id="jobTitle" name="jobTitle" placeholder="e.g. Finance Manager" required aria-invalid={!!fieldErrors.jobTitle} className={fieldErrors.jobTitle ? "is-error" : ""} onChange={() => clearFieldError("jobTitle")} />
+                    {fieldErrors.jobTitle && <span className="field-error">{fieldErrors.jobTitle}</span>}
                   </div>
                 </div>
                 <div className="form-row">
                   <div className="form-field">
                     <label htmlFor="email">Work email<span className="req">*</span></label>
-                    <input type="email" id="email" name="email" placeholder="you@company.com" required />
+                    <input type="email" id="email" name="email" placeholder="you@company.com" required aria-invalid={!!fieldErrors.email} className={fieldErrors.email ? "is-error" : ""} onChange={() => clearFieldError("email")} />
+                    {fieldErrors.email && <span className="field-error">{fieldErrors.email}</span>}
                   </div>
                   <div className="form-field">
                     <label htmlFor="phone">Phone<span className="req">*</span></label>
-                    <div className="phone-wrap">
+                    <div className={`phone-wrap${fieldErrors.phone ? " is-error" : ""}`}>
                       <select className="phone-country" id="phoneCountry" name="phoneCountry" defaultValue="+966" aria-label="Country code">
                         {COUNTRIES.map((c) => (
                           <option key={c.code} value={c.code}>{c.flag} {c.code}</option>
                         ))}
                       </select>
-                      <input type="tel" id="phone" name="phone" placeholder="5X XXX XXXX" required />
+                      <input type="tel" id="phone" name="phone" placeholder="5X XXX XXXX" required aria-invalid={!!fieldErrors.phone} onChange={() => clearFieldError("phone")} />
                     </div>
+                    {fieldErrors.phone && <span className="field-error">{fieldErrors.phone}</span>}
                   </div>
                 </div>
               </div>
@@ -336,32 +340,36 @@ export default function PricingChoosePage() {
                 <div className="form-row single">
                   <div className="form-field">
                     <label htmlFor="company">Company name<span className="req">*</span></label>
-                    <input type="text" id="company" name="company" placeholder="Your company's legal name" required />
+                    <input type="text" id="company" name="company" placeholder="Your company's legal name" required aria-invalid={!!fieldErrors.company} className={fieldErrors.company ? "is-error" : ""} onChange={() => clearFieldError("company")} />
+                    {fieldErrors.company && <span className="field-error">{fieldErrors.company}</span>}
                   </div>
                 </div>
                 <div className="form-row">
                   <div className="form-field">
                     <label htmlFor="industry">Industry<span className="req">*</span></label>
-                    <select id="industry" name="industry" required defaultValue="">
+                    <select id="industry" name="industry" required defaultValue="" aria-invalid={!!fieldErrors.industry} className={fieldErrors.industry ? "is-error" : ""} onChange={() => clearFieldError("industry")}>
                       <option value="" disabled>Select your industry</option>
                       {INDUSTRY_OPTS.map(([v, l]) => <option key={v} value={v}>{l}</option>)}
                     </select>
+                    {fieldErrors.industry && <span className="field-error">{fieldErrors.industry}</span>}
                   </div>
                   <div className="form-field">
                     <label htmlFor="size">Company size<span className="req">*</span></label>
-                    <select id="size" name="size" required defaultValue="">
+                    <select id="size" name="size" required defaultValue="" aria-invalid={!!fieldErrors.size} className={fieldErrors.size ? "is-error" : ""} onChange={() => clearFieldError("size")}>
                       <option value="" disabled>Number of employees</option>
                       {SIZE_OPTS.map(([v, l]) => <option key={v} value={v}>{l}</option>)}
                     </select>
+                    {fieldErrors.size && <span className="field-error">{fieldErrors.size}</span>}
                   </div>
                 </div>
                 <div className="form-row single">
                   <div className="form-field">
                     <label htmlFor="currentSystem">Current system<span className="req">*</span></label>
-                    <select id="currentSystem" name="currentSystem" required defaultValue="">
+                    <select id="currentSystem" name="currentSystem" required defaultValue="" aria-invalid={!!fieldErrors.currentSystem} className={fieldErrors.currentSystem ? "is-error" : ""} onChange={() => clearFieldError("currentSystem")}>
                       <option value="" disabled>What are you using today?</option>
                       {SYSTEM_OPTS.map(([v, l]) => <option key={v} value={v}>{l}</option>)}
                     </select>
+                    {fieldErrors.currentSystem && <span className="field-error">{fieldErrors.currentSystem}</span>}
                   </div>
                 </div>
               </div>
@@ -387,6 +395,9 @@ export default function PricingChoosePage() {
               </div>
 
               {error && <p className="error">{error}</p>}
+              {Object.keys(fieldErrors).length > 0 && (
+                <p className="error">Please fix the highlighted fields before submitting.</p>
+              )}
 
               <div className="submit-row">
                 <p className="submit-note">By submitting, you agree to be contacted by Falcon about your inquiry. We respond within 24 hours.</p>
@@ -395,6 +406,7 @@ export default function PricingChoosePage() {
                 </button>
               </div>
             </form>
+
           </div>
         </>
       )}
