@@ -29,6 +29,7 @@ export const NAV_ITEMS = [
       { key: "odooServices", href: "/products/odoo-services" },
     ],
   },
+  { key: "pricing", href: "/pricing" },
   { key: "demo", href: "/demo" },
   { key: "about", href: "/about" },
   { key: "contact", href: "/contact" },
