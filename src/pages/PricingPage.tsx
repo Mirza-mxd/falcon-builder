@@ -188,7 +188,7 @@ export default function PricingPage() {
       {/* HERO */}
       <section className="hero">
         <div className="container">
-          <span className="eyebrow">Pricing</span>
+          <span className="eyebrow">Pricing · 2026 · Kingdom of Saudi Arabia</span>
           <h1>Clear pricing for your <span className="accent">ERP journey</span></h1>
           <p className="lead">From Odoo implementations to Falcon ERP products, plus shared services and bundle discounts. Pick a starting point, or talk to us for a tailored quote.</p>
         </div>
