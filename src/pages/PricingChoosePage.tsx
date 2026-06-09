@@ -67,9 +67,9 @@ const CSS = `
 
 .choose-root .phone-wrap { display: flex; align-items: stretch; border: 1.5px solid var(--border); border-radius: var(--radius-input); overflow: hidden; background: white; transition: border-color 0.15s, box-shadow 0.15s; }
 .choose-root .phone-wrap:focus-within { border-color: var(--border-focus); box-shadow: 0 0 0 3px var(--cyan-100); }
-.choose-root .phone-country { appearance: none; border: none; background: var(--surface-alt); color: var(--text-primary); font-family: inherit; font-size: 15px; font-weight: 500; padding: 12px 36px 12px 14px; border-right: 1px solid var(--border); cursor: pointer; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path fill='%2364748B' d='M6 8L0 0h12z'/></svg>"); background-repeat: no-repeat; background-position: right 12px center; }
+.choose-root .phone-country { flex: 0 0 25%; width: 25%; min-width: 0; appearance: none; border: none; background: var(--surface-alt); color: var(--text-primary); font-family: inherit; font-size: 15px; font-weight: 500; padding: 12px 28px 12px 12px; border-right: 1px solid var(--border); cursor: pointer; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path fill='%2364748B' d='M6 8L0 0h12z'/></svg>"); background-repeat: no-repeat; background-position: right 10px center; text-overflow: ellipsis; }
 .choose-root .phone-country:focus { outline: none; }
-.choose-root .phone-wrap input { flex: 1; border: none; padding: 12px 14px; font-family: inherit; font-size: 15px; color: var(--text-primary); outline: none; background: transparent; }
+.choose-root .phone-wrap input { flex: 1 1 75%; width: 75%; min-width: 0; border: none; padding: 12px 14px; font-family: inherit; font-size: 15px; color: var(--text-primary); outline: none; background: transparent; }
 
 .choose-root .submit-row { margin-top: 36px; padding-top: 28px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 .choose-root .submit-note { font-size: 13px; color: var(--text-muted); flex: 1; min-width: 220px; }
