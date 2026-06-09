@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Link, useSearch } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { PLAN_DETAILS, isPlanKey, type PlanKey } from "@/lib/pricing-plans";
-import { submitLead } from "@/lib/leads.functions";
+import { submitPricingLead } from "@/lib/form-leads.functions";
 
 const CSS = `
 .choose-root {
@@ -146,7 +146,7 @@ export default function PricingChoosePage() {
   const planKey: PlanKey | null = isPlanKey(search.plan) ? search.plan : null;
   const plan = planKey ? PLAN_DETAILS[planKey] : null;
 
-  const submit = useServerFn(submitLead);
+  const submit = useServerFn(submitPricingLead);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -164,23 +164,19 @@ export default function PricingChoosePage() {
     try {
       const res = await submit({
         data: {
-          type: "contact",
-          name: String(fd.get("fullName") ?? ""),
+          plan_key: planKey ?? null,
+          plan_name: plan?.name ?? null,
+          full_name: String(fd.get("fullName") ?? ""),
+          job_title: String(fd.get("jobTitle") ?? ""),
           email: String(fd.get("email") ?? ""),
           phone: `${phoneCountry} ${phoneNumber}`.trim(),
           company: String(fd.get("company") ?? ""),
-          message: String(fd.get("needs") ?? ""),
+          industry: String(fd.get("industry") ?? ""),
+          company_size: String(fd.get("size") ?? ""),
+          current_system: String(fd.get("currentSystem") ?? ""),
+          timeline: String(fd.get("timeline") ?? ""),
+          needs: String(fd.get("needs") ?? ""),
           locale: "en",
-          payload: {
-            selected_plan: planKey ?? "unknown",
-            plan_name: plan?.name ?? null,
-            job_title: String(fd.get("jobTitle") ?? ""),
-            industry: String(fd.get("industry") ?? ""),
-            company_size: String(fd.get("size") ?? ""),
-            current_system: String(fd.get("currentSystem") ?? ""),
-            timeline: String(fd.get("timeline") ?? ""),
-            subject: "quote",
-          },
           hp: String(fd.get("company_website") ?? ""),
           ts: tsRef.current,
         },

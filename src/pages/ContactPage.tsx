@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useIsRTL, useLocale, useTranslations } from "@/lib/i18n";
 import { useServerFn } from "@tanstack/react-start";
 import { useSearch } from "@tanstack/react-router";
-import { submitLead } from "@/lib/leads.functions";
+import { submitContactLead } from "@/lib/form-leads.functions";
 import Container from "@/components/ui/Container";
 import FCard from "@/components/ui/FCard";
 import FButton from "@/components/ui/FButton";
@@ -52,7 +52,7 @@ export default function ContactPage() {
   const isRTL = useIsRTL();
   const c = isRTL ? C.ar : C.en;
   const t = useTranslations("contact");
-  const submit = useServerFn(submitLead);
+  const submit = useServerFn(submitContactLead);
   const search = useSearch({ strict: false }) as { subject?: string };
   const initialSubject: SubjectKey | "" = search.subject === "quote" ? "quote" : "";
   const [subject, setSubject] = useState<SubjectKey | "">(initialSubject);
@@ -71,14 +71,12 @@ export default function ContactPage() {
     try {
       const res = await submit({
         data: {
-          type: "contact",
           name: String(fd.get("name") ?? ""),
           email: String(fd.get("email") ?? ""),
           phone: String(fd.get("phone") ?? ""),
-          company: "",
+          subject: subjectValue,
           message: String(fd.get("message") ?? ""),
           locale,
-          payload: { subject: subjectValue },
           hp: String(fd.get("company_website") ?? ""),
           ts: tsRef.current,
         },
